@@ -1,0 +1,155 @@
+/* Loại bỏ quy tắc áp dụng cho body */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+.container1 {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto; /* Căn giữa container trong body */
+    padding: 20px; /* Thêm padding để tránh sát lề */
+}
+
+.left-panel1 {
+    background-color: #3cc2a0;
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.logo {
+    font-size: 5rem;
+    color: white;
+    font-weight: bold;
+}
+
+.right-panel1 {
+    background-color: white;
+    width: 65%;
+    padding: 40px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.form-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+label {
+    position: relative;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.create-account-btn {
+    background-color: #3cc2a0;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.or {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.google-signup {
+    background-color: white;
+    color: #666;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.google-signup img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.google-signup:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.login-link {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 20px;
+}
+
+.login-link a {
+    color: #3cc2a0;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
