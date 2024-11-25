@@ -1,0 +1,498 @@
+{
+  "songsBXH": [
+    {
+      "id": "1"
+    },
+    {
+      "id": "2"
+    },
+    {
+      "id": "3"
+    },
+    {
+      "id": "4"
+    },
+    {
+      "id": "5"
+    },
+    {
+      "id": "6"
+    },
+    {
+      "id": "7"
+    },
+    {
+      "id": "8"
+    },
+    {
+      "id": "9"
+    },
+    {
+      "id": "10"
+    }
+  ],
+  "albums": [
+    {
+      "id": "1",
+      "title": "Tên Album 1",
+      "cover": "/images/image1.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Tên Album 2",
+      "cover": "/images/image2.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Tên Album 3",
+      "cover": "/images/image3.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Tên Album 4",
+      "cover": "/images/image4.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Tên Album 5",
+      "cover": "/images/image1.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Tên Album 6",
+      "cover": "/images/image2.jpg"
+    },
+    {
+      "id": "7",
+      "title": "Tên Album 7",
+      "cover": "/images/image3.jpg"
+    },
+    {
+      "id": "8",
+      "title": "Tên Album 8",
+      "cover": "/images/image4.jpg"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Pop"
+    },
+    {
+      "id": "2",
+      "name": "Rock"
+    },
+    {
+      "id": "3",
+      "name": "Rap"
+    },
+    {
+      "id": "4",
+      "name": "Classical"
+    }
+  ],
+  "playlist": [
+    {
+      "id": "6953",
+      "title": "playList1",
+      "userid": "1",
+      "img": "/images/5anhem.jpg",
+      "description": "aaa",
+      "listsongid": [
+        "1"
+      ]
+    },
+    {
+      "title": "playList1",
+      "userid": "9a78",
+      "img": "/images/quangle1.jpg",
+      "description": "aaa",
+      "listsongid": [
+        "2"
+      ],
+      "id": "9305"
+    }
+  ],
+
+  "users": [
+    {
+      "id": "1",
+      "fullName": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "password123",
+      "Gender": "Male",
+      "RoleId": "1"
+    },
+    {
+      "id": "2",
+      "fullName": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "password": "securepassword",
+      "Gender": "Male",
+      "RoleId": "2",
+      "Premium": "Yes"
+    },
+    {
+      "id": "3",
+      "fullName": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "password": "mypassword",
+      "Gender": "Male",
+      "RoleId": "2",
+      "Premium": "No"
+    },
+    {
+      "id": "9a78",
+      "fullName": "Nguyễn Phú Anh",
+      "email": "phuanhpro11@gmail.com",
+      "password": "123",
+      "Gender": "Female",
+      "RoleId": "2",
+      "Premium": "Yes"
+    },
+    {
+      "id": "00df",
+      "fullName": "tuan",
+      "email": "abc",
+      "password": "123",
+      "RoleId": "2"
+    }
+  ],
+  "listsongs": [
+    {
+      "id": "1",
+      "title": "Lạc Trôi",
+      "imgSrc": "/images/lactroi.jpg",
+      "src": "/music/LacTroiTripleDRemix-SonTungMTP-5164670.mp3",
+      "artistID": "1",
+      "plays": 123456,
+      "lyrics": "Người theo hương hoa mây mù giăng lối\nLàn sương khói phôi phai đưa bước ai xa rồi\nĐơn côi mình ta vấn vương\nHồi ức, trong men say chiều mưa buồn\nNgăn giọt lệ ngừng khiến khoé mi sầu bi\nĐường xưa nơi cố nhân từ giã biệt li\nCánh hoa rụng rơi\nPhận duyên mong manh rẽ lối trong mơ ngày tương phùng\n\nTiếng khóc cuốn theo làn gió bay\nThuyền ai qua sông lỡ quên vớt ánh trăng tàn nơi này\nTrống vắng bóng ai dần hao gầy\n\n♪Lòng ta xin nguyện khắc ghi trong tim tình nồng mê say\nMặc cho tóc mây vương lên đôi môi cay\nBâng khuâng mình ta lạc trôi giữa đời\nTa lạc trôi giữa trời\n\nĐôi chân lang thang về nơi đâu?\nBao yêu thương giờ nơi đâu?\nCâu thơ tình xưa vội phai mờ\nTheo làn sương tan biến trong cõi mơ\nMưa bụi vương trên làn mi mắt\nNgày chia lìa hoa rơi buồn hiu hắt\nTiếng đàn ai thêm sầu tương tư lặng mình trong chiều hoàng hôn,\nTan vào lời ca (Hey)\n\nLối mòn đường vắng một mình ta\nNắng chiều vàng úa nhuộm ngày qua\nXin đừng quay lưng xoá\nĐừng mang câu hẹn ước kia rời xa\nYên bình nơi nào đây\nChôn vùi theo làn mây\nEh-h-h-h-h, la-la-la-la-a-a\n\nNgười theo hương hoa mây mù giăng lối\nLàn sương khói phôi phai đưa bước ai xa rồi\nĐơn côi mình ta vấn vương, hồi ức trong men say chiều mưa buồn\nNgăn giọt lệ ngừng khiến khoé mi sầu bi\nĐường xưa nơi cố nhân từ giã biệt li\nCánh hoa rụng rơi\nPhận duyên mong manh rẽ lối trong mơ ngày tương phùng\n\nTiếng khóc cuốn theo làn gió bay\nThuyền ai qua sông lỡ quên vớt ánh trăng tàn nơi này\nTrống vắng bóng ai dần hao gầy\n\n♪Lòng ta xin nguyện khắc ghi trong tim tình nồng mê say\nMặc cho tóc mây vương lên đôi môi cay\nBâng khuâng mình ta lạc trôi giữa đời\nTa lạc trôi giữa trời\n\n♪Ta lạc trôi (Lạc trôi)\nTa lạc trôi giữa đời\nLạc trôi giữa trời\nYeah, ah-h-h-h-h-h\n\n♪Ta đang lạc nơi nào (Lạc nơi nào, lạc nơi nào)\n♪Ta đang lạc nơi nào\nLối mòn đường vắng một mình ta\nTa đang lạc nơi nào\nNắng chiều vàng úa nhuộm ngày qua\nTa đang lạc nơi nào",
+      "categoryId": 1,
+      "AlbumID": 1,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "2",
+      "title": "Cảm Giác Lúc Ấy Sẽ Ra Sao",
+      "imgSrc": "/images/ngaydeptroidenoichiatay.jpg",
+      "src": "/music/CamGiacLucAySeRaSao-LouHoang-13538255.mp3",
+      "lyrics": "Nếu có lúc đôi ta phải nhìn lại\nNếu có lúc yêu đương này nhạt phai\nSẽ thế nào nếu chia tay\nKhông muốn phải nuối tiếc\nSẽ có lúc không ai hiểu được mình\nSẽ đến lúc không biết phải làm sao\nNếu chia tay sẽ thế nào\nBây giờ gặp mặt nhau biết nói câu gì\n\nCảm giác lúc ấy sẽ ra sao?\nTự hỏi rằng sẽ khó thế nào?\nTạm biệt người yêu trong hồi ức\nTạm biệt tình yêu nơi tiềm thức\nĐã bao nhiêu lần nếm cay đắng khi yêu\nCảm giác lúc ấy sẽ ra sao?\nCô đơn lên ngôi suốt bao đêm dài\nTạm biệt người yêu thương nhiều nhất\nTạm biệt người mang bao phiền phức\nĐến con tim này\nHay là ta mới yêu chưa kịp đậm sâu\n\nNếu có lúc đôi ta phải nhìn lại\nNếu có lúc yêu đương này nhạt phai\nSẽ thế nào nếu chia tay\nKhông muốn phải lặng im\nSẽ có lúc không ai hiểu được mình\nSẽ đến lúc không biết phải làm sao\nNếu chia tay sẽ thế nào\nBây giờ gặp mặt nhau biết nói câu gì\n\nCảm giác lúc ấy sẽ ra sao?\nTự hỏi rằng sẽ khó thế nào?\nTạm biệt người yêu trong hồi ức\nTạm biệt tình yêu nơi tiềm thức\nĐã bao nhiêu lần nếm cay đắng khi yêu\nCảm giác lúc ấy sẽ ra sao?\nCô đơn lên ngôi suốt bao đêm dài\nTạm biệt người yêu thương nhiều nhất\nTạm biệt người mang bao phiền phức\nĐến con tim này\nHay là ta mới yêu chưa kịp đậm sâu\n\nCảm giác lúc ấy sẽ ra sao?\nTự hỏi rằng sẽ khó thế nào?\nTạm biệt người yêu trong hồi ức\nTạm biệt tình yêu nơi tiềm thức\nĐã bao nhiêu lần nếm cay đắng khi yêu\nCảm giác lúc ấy sẽ ra sao?\nTự hỏi rằng sẽ khó thế nào?\nTạm biệt người yêu trong hồi ức\nTạm biệt tình yêu nơi tiềm thức\nĐã bao nhiêu lần\nNếm cay đắng khi yêu\nCảm giác lúc ấy sẽ ra sao?\nCô đơn theo suốt bao đêm dài\nTạm biệt người yêu thương nhiều nhất\nTạm biệt người mang bao phiền phức\nĐến con tim này\nHay là ta mới yêu chưa kịp đậm sâu",
+      "artistID": "2",
+      "plays": 98773,
+      "categoryId": 1,
+      "AlbumID": 1,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "4",
+      "title": "Cẩm Tú Cầu",
+      "imgSrc": "/images/image1.jpg",
+      "src": "/music/song3.mp3",
+      "artistID": "3",
+      "lyrics": "Dáng ai dần xa xôi\nSánh vai người ta rồi\nTrái tim vỡ ra làm đôi\nEm hứa mãi bên anh mà\nTình đẹp là tình dang dở\nToàn làm người ta ngỡ\nNgỡ đâu lâu dài\nNgỡ bên nhau hoài\n\nTiếng ai vọng bên tai\nCó phải người quay lại\nCứ ngày rồi đêm mong\nĐợi trong lẻ loi, vô vọng\nTình đẹp là tình dang dở\nToàn làm người ta ngỡ\nNgỡ không chia rời\nNgỡ đâu cả đời\n\n[ĐK]:\nChờ người từ lúc nắng dần buông\nMưa trên cao vẫn cứ thế tuôn\nY như đang khóc thế nỗi buồn\nKhông cách nào để quên được đi em\nUống càng say thì lại càng nhớ thêm\nĐời người được có mấy lần yêu\nNên đâu biết trước có bao điều\nKhiến ta đau đớn rất rất nhiều\n\nCẩm tú cầu người thường nâng niu\nHon héo dần từ ngày em đi\nTừng là bầu trời đầy nắng\nMà giờ mờ mịt mờ mây giăng\nĐứng dưới ánh trăng\nTâm tình cùng kí ức vĩnh hằng\nNgười xưa có nhớ về nhau không\nChoàng tay ôm lấy mỗi khi đông\nVai tựa vai, môi kề môi thay lời nói\n\nTừng là chuyện tình rực rỡ\nTàn cuộc lại về chơ vơ\nTỉnh thức giữa cơn mơ\nAnh lại cuồng điên như gã khờ\nNgười đang yên giấc nồng bên ai\nỞ đây mưa gió vẫn chưa phai\nQua ngày mai, câu chuyện xưa xin cất lại\n\nAnh vẫn chẳng muốn tin rằng cho đến cuối cùng dừng chân\nKết thúc lại là người dưng\nChúng ta vô tình gặp rồi thương nhau,\nĐể gieo niềm đau về sau!",
+      "plays": 67890,
+      "categoryId": 1,
+      "AlbumID": 4,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "5",
+      "title": "Anh Thôi Nhân Nhượng (Cover)",
+      "imgSrc": "/images/image2.jpg",
+      "src": "/music/Camtucau.mp3",
+      "artistID": "4",
+      "lyrics": "Thầm thương trộm nhớ em vẫn ngẩn ngơ đợi chờ\nDẫu biết chân tình chưa đủ lớn còn dang dở\nNgậm đắng nuốt cay em sợ mình chẳng thể nắm tay\nPhải vùng vẫy nghĩ cách đứng dậy sao khó vậy\n\nEm dành cả tương lai nhưng anh phải lòng yêu ai\nSao gặp em anh phải tỏ ra ngần ngại\nEm lùi lại một bước ngẩn ngơ nhìn người thân thương\nHợp thành đôi uyên ương sánh bước trên đường\n\nChẳng buồn tương tư làm chi nên em chọn cách ngoảnh đầu bước đi\nDành cả thanh xuân gửi trao mà anh nỡ ngó lơ là sao\nDừng lại em cũng đau lắm nhưng em không muốn mình phải vấn vương\nVà em cũng biết định hướng người anh thương em thôi nhân nhượng\n\nKỷ niệm em đâu nỡ xóa em sẽ gom góp gửi vào nắng mai\nĐể được thăng hoa mãi mãi tô điểm nhấn không chút mờ phai\nDù sao cũng xin cảm ơn đã khiến cuộc sống em rạng rỡ hơn\nBộn bề em xin nhận lấy nhường cho anh hạnh phúc đong đầy",
+      "categoryId": 2,
+      "plays": 12346,
+      "AlbumID": 5,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "6",
+      "title": "Rock Sài Gòn",
+      "imgSrc": "/images/image2.jpg",
+      "src": "/music/song5.mp3",
+      "artistID": "6",
+      "lyrics": "Tít xa, ở mãi chân trời xanh\nNhững cánh chim bồ câu đang bay về\nLắng nghe hãy lắng nghe bạn ơi\nNhịp đập con tim thành phố\n\nĐK:\nNhớ mãi nhớ mãi Sài Gòn dấu yêu\nSài gòn ta đó ánh dương sáng ngời\nSài Gòn vươn xa\nSài Gòn vươn đến tương lai rạng ngời\nNhớ mãi nhớ mãi Sài Gòn dấu yêu\nMùa hoa phượng nở đỏ tươi khắp trời\nNào bạn thân ơi, cùng nhau ta hát vang lên\nRock Sài Gòn",
+      "categoryId": 2,
+      "plays": 67890,
+      "AlbumID": 6,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "7",
+      "title": "Tên Bài Hát 6",
+      "imgSrc": "/images/image2.jpg",
+      "src": "/music/song6.mp3",
+      "artistID": "1",
+      "lyrics": "",
+      "categoryId": 2,
+      "plays": 23456,
+      "AlbumID": 7,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "8",
+      "title": "Tên Bài Hát 7",
+      "imgSrc": "/images/image2.jpg",
+      "src": "/music/song7.mp3",
+      "artistID": "1",
+      "lyrics": "",
+      "categoryId": 2,
+      "plays": 78901,
+      "AlbumID": 7,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "9",
+      "title": "Tau Thich Mi",
+      "imgSrc": "/images/image3.jpg",
+      "src": "/music/TauThichMi.mp3",
+      "artistID": "1",
+      "categoryId": 3,
+      "lyrics": "Tau thích mi nhưng tau không hề dám nói ra\nCó lẽ ngại có lẽ dị hoặc không có lí do gì cả\nTao biết tao không bằng được người ta nên nói yêu mi chỉ là một điều gì đó rất xa mà\nYêu là một thứ quá cao khỏi tầm tay nên nói thích mi chắc cũng không có sao đâu nhỉ\nTao biết mi không cho nhưng tao thích như rứa đó\nTao thích ngồi ngắm ánh mắt của mi mỗi khi mi nhìn hay mi đang ngó\nHay mỗi lúc mi lặng thinh đi vì những điều không vui làm mi cau có\nTao biết tao không mong được như thằng Baek Hyun được Hyun Jung kêu là chồng ơi\nNhưng mỗi khi mi kêu tao là heo ơi heo sao trong tao thấy vui thế\nChữ heo kéo dài ra và chữ ơi nặng cả tạ\nVới đôi mắt to tròn như căng ra\nKhiến tao gần như gục ngã\nMi như trái đất khiến bao nhiu vệ tinh nhân tạo bay quanh chết ngất\nTao như mặt trăng đứng từ xa nhìn mi với tình cảm chân thật\nVà một thứ gì đó gần như đã đánh mất\nBa phút nó quá ngắn nếu so với một ngày\nBa từ tao thích mi nó quá khó để nói ngay\nBa năm để tao cố gắng không cơ hội sẽ vụt bay\nVà ba phút là thời gian để tao nói ra hết nỗi lòng này\nYêu hay là thích, hay chỉ là sự ấn tượng\nTao không cần phải giải thích vì trong lòng tao vấn vương\nMỗi nụ cười mỗi ánh mắt của mi làm tim tao như chấn thương\nMỗi cử chỉ mỗi hành động của mi tao xem nó rất thân thương\nVì răng tao thích mi, tao không biết nói thế nào\nTình cảm nó đến nhẹ nhàng, tao không biết phải làm sao\nLần đầu tiên trong đời tao mới biết thế nào là thích 1 người\nLà thích tất cả mọi thứ, từ ánh mắt đến nụ cười\nLà đêm nằm mơ về mi, mở mắt ra cũng chỉ thấy mi\nLà cảm giác đợi chờ không thôi, là lo lắng khi mi giận dỗi\nLà những cảm giác lần đầu có và mi là người đã mang đến nó\nNhưng tao không có gì để mi thích tao\nTao không có bờ vai rộng để mi dựa vào lúc chơi vơi\nTao không có sức khỏe tốt để cùng mi đi chơi\nTao không có nhiều tiền để mua cho mi những món quà mới\nNhưng tao có tình cảm chân thành không lúc nào nghỉ ngơi.",
+      "plays": 34567,
+      "AlbumID": 7,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "10",
+      "title": "Tên Bài Hát 9",
+      "imgSrc": "/images/image3.jpg",
+      "src": "/music/song9.mp3",
+      "artistID": "7",
+      "categoryId": 3,
+      "lyrics": "",
+      "plays": 89012,
+      "AlbumID": 7,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "11",
+      "title": "Tên Bài Hát 10",
+      "imgSrc": "/images/image3.jpg",
+      "src": "/music/song10.mp3",
+      "artistID": "7",
+      "categoryId": 3,
+      "lyrics": "",
+      "plays": 45678,
+      "AlbumID": 7,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "12",
+      "title": "Tên Bài Hát 11",
+      "imgSrc": "/images/image3.jpg",
+      "src": "/music/song11.mp3",
+      "artistID": "7",
+      "lyrics": "",
+      "categoryId": 3,
+      "plays": 90123,
+      "AlbumID": 7,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "13",
+      "title": "5 Anh Em Trên Một Chiếc Xe Tăng",
+      "imgSrc": "/images/5anhem.jpg",
+      "src": "/music/5AnhEmTrenMotChiecXeTang.mp3",
+      "artistID": "7",
+      "categoryId": 4,
+      "lyrics": "Năm anh em trên một chiếc xe tăng\nNhư năm bông hoa nở cùng một cội\nNhư năm ngón tay trên một bàn tay\nĐã xung trận cả năm người như một\n\nVào lính xe tăng anh trước anh sau\nCái nết ở ăn mỗi người một tính\nNhưng khi hát ta hoà cùng một nhịp\nMột người đau ta tất cả quên ăn\n\nNăm anh em mỗi đứa một quê\nĐã lên xe ấy là cùng một hướng\nNổ máy lên ta một dạ xung phong\nTrước quân thù lòng chỉ biết có tiến công\n\nNăm anh em ta có năm cái tên\nẤy khi lên xe không còn tên riêng nữa\nTrên tháp pháo một ngôi sao màu lửa\nNăm quả tim chung nhịp đập rộn ràng\n\nMột con đường đất đỏ như son\nMột màu rừng xanh bạt ngàn hi vọng\nMột ý chí bay qua đầu ngọn súng\nMột niềm tin quyết thắng trong trận này",
+      "plays": 56790,
+      "AlbumID": 7,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "14",
+      "title": "Tên Bài Hát 13",
+      "imgSrc": "/images/image4.jpg",
+      "src": "/music/song13.mp3",
+      "artistID": "7",
+      "categoryId": 4,
+      "lyrics": "",
+      "plays": 123456,
+      "premium": true,
+      "accept": "yes"
+    },
+    {
+      "id": "15",
+      "title": "Tên Bài Hát 14",
+      "imgSrc": "/images/image4.jpg",
+      "src": "/music/song14.mp3",
+      "artistID": "7",
+      "lyrics": "",
+      "categoryId": 4,
+      "plays": 234567,
+      "premium": true,
+      "accept": "yes"
+    }
+  ],
+  "artist": [
+    {
+      "id": "1",
+      "name": "Sơn Tùng M-TP",
+      "cateId": "1",
+      "Gender": "Male",
+      "dob": "1997-01-01",
+      "email": "sontungmtp@example.com",
+      "password": "password1"
+    },
+    {
+      "id": "2",
+      "name": "Lou Hoàng",
+      "cateId": "2",
+      "Gender": "Male",
+      "dob": "2006-06-10",
+      "email": "louhoang@example.com",
+      "password": "password2"
+    },
+    {
+      "id": "3",
+      "name": "LigPig",
+      "cateId": "1",
+      "Gender": "Male",
+      "dob": "1992",
+      "email": "ligpig@example.com",
+      "password": "password3"
+    },
+    {
+      "id": "4",
+      "name": "Lương Gia Huy",
+      "cateId": "1",
+      "Gender": "Female",
+      "dob": "1995",
+      "email": "luonggiahuy@example.com",
+      "password": "password4"
+    },
+    {
+      "id": "5",
+      "name": "Kiều Chi",
+      "cateId": "2",
+      "Gender": "Male",
+      "dob": "1990",
+      "email": "kieuchi@example.com",
+      "password": "password5"
+    },
+    {
+      "id": "6",
+      "name": "Vũ Khanh",
+      "cateId": "2",
+      "Gender": "Female",
+      "dob": "1988",
+      "email": "vukhanh@example.com",
+      "password": "password6"
+    },
+    {
+      "id": "7",
+      "name": "Artist 6",
+      "cateId": "2",
+      "Gender": "Male",
+      "dob": "1985",
+      "email": "artist6@example.com",
+      "password": "password7"
+    },
+    {
+      "id": "8",
+      "name": "Artist 7",
+      "cateId": "2",
+      "Gender": "Female",
+      "dob": "1991",
+      "email": "artist7@example.com",
+      "password": "password8"
+    },
+    {
+      "id": "9",
+      "name": "Artist 8",
+      "cateId": "3",
+      "Gender": "Male",
+      "dob": "1987",
+      "email": "artist8@example.com",
+      "password": "password9"
+    },
+    {
+      "id": "10",
+      "name": "Artist 9",
+      "cateId": "3",
+      "Gender": "Female",
+      "dob": "1989",
+      "email": "artist9@example.com",
+      "password": "password10"
+    },
+    {
+      "id": "11",
+      "name": "Artist 10",
+      "cateId": "3",
+      "Gender": "Male",
+      "dob": "1993",
+      "email": "artist10@example.com",
+      "password": "password11"
+    },
+    {
+      "id": "12",
+      "name": "Artist 11",
+      "cateId": "3",
+      "Gender": "Female",
+      "dob": "1996",
+      "email": "artist11@example.com",
+      "password": "password12"
+    },
+    {
+      "id": "13",
+      "name": "Artist 12",
+      "cateId": "4",
+      "Gender": "Male",
+      "dob": "1984",
+      "email": "artist12@example.com",
+      "password": "password13"
+    },
+    {
+      "id": "14",
+      "name": "Artist 13",
+      "cateId": "4",
+      "Gender": "Female",
+      "dob": "1990",
+      "email": "artist13@example.com",
+      "password": "password14"
+    },
+    {
+      "id": "15",
+      "name": "Artist 14",
+      "cateId": "4",
+      "Gender": "Male",
+      "dob": "1986",
+      "email": "artist14@example.com",
+      "password": "password15"
+    },
+    {
+      "id": "16",
+      "name": "Artist 15",
+      "cateId": "4",
+      "Gender": "Female",
+      "dob": "1990",
+      "email": "artist15@example.com",
+      "password": "password16"
+    },
+    {
+      "id": "17",
+      "name": "gssđ",
+      "cateId": "2",
+      "Gender": "Male",
+      "dob": "2024-07-11",
+      "email": "gssd@example.com",
+      "password": "password17"
+    }
+  ]
+}
