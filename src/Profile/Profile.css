@@ -1,0 +1,25 @@
+.profile-container {
+    background-color: #f8f9fa;
+  }
+  
+  .profile-header {
+    /* background-image: url('/images/anhnencanhan.jpg'); */
+    background-size: cover;
+    color: white;
+  }
+  
+  .profile-avatar {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .card-group {
+    margin-bottom: 20px;
+  }
+  
+  .card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
