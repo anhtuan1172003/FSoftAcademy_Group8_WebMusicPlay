@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './HomePage/Homepage';
+import HomePage from './HomePage/homepage';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import Profile from './Profile/Profile';
-
+import AddSongArtist from './Artist/AddSong';
+import ManageTableArtist from './Artist/ManagerSong';
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
           <Route path='/Register' element={<Register />} />
           <Route path='/profile/:uID' element={<Profile />} />
           <Route path='/userprofile/:uID' element={<Profile />} />
+          <Route path='/addSongA' element={<AddSongArtist />} />
+          <Route path='/ManageTableArtist' element={<ManageTableArtist />} />
         </Routes>
       </BrowserRouter>
   );
