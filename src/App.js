@@ -4,6 +4,7 @@ import HomePage from './HomePage/Homepage';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import Profile from './Profile/Profile';
+import SongDetail from './SongDetails/SongDetails';
 
 
 
@@ -17,6 +18,7 @@ function App() {
           <Route path='/Register' element={<Register />} />
           <Route path='/profile/:uID' element={<Profile />} />
           <Route path='/userprofile/:uID' element={<Profile />} />
+          <Route path='/song/:sID' element={<SongDetail />} />
         </Routes>
       </BrowserRouter>
   );
