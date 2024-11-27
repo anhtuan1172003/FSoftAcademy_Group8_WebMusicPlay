@@ -5,7 +5,8 @@ import Login from './Login/Login';
 import Register from './Register/Register';
 import Profile from './Profile/Profile';
 import SongDetail from './SongDetails/SongDetails';
-
+import AddSongArtist from './Artist/AddSong';
+import ManageTableArtist from './Artist/ManagerSong';
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
           <Route path='/profile/:uID' element={<Profile />} />
           <Route path='/userprofile/:uID' element={<Profile />} />
           <Route path='/song/:sID' element={<SongDetail />} />
+          <Route path='/addSongA' element={<AddSongArtist />} />
+          <Route path='/ManageTableArtist' element={<ManageTableArtist />} />
         </Routes>
       </BrowserRouter>
   );
