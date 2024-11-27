@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import Main from './Main';
 import Footer from '../Footer/Footer';
+import BXH from './BXH';
 import Carousel1 from './Carousel';
 
   
@@ -32,10 +33,13 @@ export default function HomePage() {
             <Main/>
 
             </Col>
+            <Col md={3}>
+            <BXH></BXH>
+            </Col>
             </Row>
             </Container>
             <Row>
-              <Footer/>
+                <Footer></Footer>
              </Row>
              
             </Container>
