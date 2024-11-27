@@ -1,8 +1,9 @@
 import { Button, Container, Form, Nav, Navbar, Col, Row, Image, Carousel, NavDropdown, InputGroup } from 'react-bootstrap'
 import React, { useEffect, useState } from 'react';
-import Header from '../Header/Header';
+import Headerhomepage from './Header';
 import Main from './Main';
-import Footer from '../Footer/Footer';
+import Footer from './Footer';
+import BXH from './BXH';
 import Carousel1 from './Carousel';
 
   
@@ -21,7 +22,7 @@ export default function HomePage() {
       <div>
         <Container>
         <Row>
-            <Header/>
+            <Headerhomepage/>
         </Row>
         <Row>
           <Carousel1></Carousel1>
@@ -32,10 +33,13 @@ export default function HomePage() {
             <Main/>
 
             </Col>
+            <Col md={3}>
+            <BXH></BXH>
+            </Col>
             </Row>
             </Container>
             <Row>
-              <Footer/>
+                <Footer></Footer>
              </Row>
              
             </Container>
