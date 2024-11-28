@@ -8,6 +8,9 @@ import Profile from './Profile/Profile';
 import SongDetail from './SongDetails/SongDetails';
 import AddSongArtist from './Artist/AddSong';
 import ManageTableArtist from './Artist/ManagerSong';
+import Ranking from './BXH/BXH';
+import Album from './Album/Album';
+
 
 
 
@@ -25,6 +28,9 @@ function App() {
           <Route path='/song/:sID' element={<SongDetail />} />
           <Route path='/addSongA' element={<AddSongArtist />} />
           <Route path='/ManageTableArtist' element={<ManageTableArtist />} />
+          <Route path='/BXH' element={<Ranking />} />
+          <Route path='/Album' element={<Album />} />
+
         </Routes>
       </BrowserRouter>
   );

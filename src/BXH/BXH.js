@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Container, Row, Col, ListGroup, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Headerhomepage from "../HomePage/Header";
+import Header from "../Header/Header";
 
 const Ranking = () => {
   const [songs, setSongs] = useState([]);
@@ -94,7 +94,7 @@ const Ranking = () => {
   return (
     <Container>
       <Row>
-        <Headerhomepage />
+        <Header />
       </Row>
       <Row>
         <h2 className="my-4">Bảng xếp hạng Trending Music</h2>

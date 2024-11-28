@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Container, Row, Card } from "react-bootstrap";
 import './Album.css';
-import Headerhomepage from "../HomePage/Header";
+import Header from "../Header/Header";
 import { Link } from 'react-router-dom';
 
 export default function Album() {
@@ -16,7 +16,7 @@ export default function Album() {
   return (
     <Container>
       <Row>
-        <Headerhomepage></Headerhomepage>
+        <Header/>
       </Row>
       <Row style={{ lineHeight: "50px" }}>
         <Col md={3}><h1>Album</h1></Col>
