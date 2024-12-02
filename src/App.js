@@ -12,7 +12,7 @@ import Ranking from './BXH/BXH';
 import Album from './Album/Album';
 import AdminDashboard from './dashboard/AdminDashboard'
 import ArtistDashboard from './dashboard/ArtistDashboard'
-
+import SongList from './SongLists/SongList';
 
 function App() {
   return (
@@ -32,6 +32,7 @@ function App() {
           <Route path='/Album' element={<Album />} />
           <Route path="/adminDashboard" element={<AdminDashboard />} />
           <Route path="/artistDashboard" element={<ArtistDashboard />} />
+          <Route path='/songlist/:aID' element={<SongList />} />
         </Routes>
       </BrowserRouter>
   );
