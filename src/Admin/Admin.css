@@ -1,0 +1,12 @@
+.admin-span {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Some padding */
+    font-size: 18px; /* Increase font size */
+    font-weight: bold; /* Bold text */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px; /* Spacing between letters */
+    display: inline-block; /* Keep it inline */
+}
