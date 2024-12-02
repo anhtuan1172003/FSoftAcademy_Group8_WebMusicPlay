@@ -13,6 +13,10 @@ import Album from './Album/Album';
 import AdminDashboard from './dashboard/AdminDashboard'
 import ArtistDashboard from './dashboard/ArtistDashboard'
 import SongList from './SongLists/SongList';
+import PlaylistAddForm from './Playlist/addPlayList';
+import PlaylistUpdateForm from './Playlist/editPlayList';
+import PlaylistComponent from './Playlist/Playlist';
+import PlaylistDetail from './Playlist/PlaylistDetail';
 
 function App() {
   return (
@@ -33,6 +37,10 @@ function App() {
           <Route path="/adminDashboard" element={<AdminDashboard />} />
           <Route path="/artistDashboard" element={<ArtistDashboard />} />
           <Route path='/songlist/:aID' element={<SongList />} />
+          <Route path='/addPlaylist' element={<PlaylistAddForm />} />
+          <Route path='/editplaylist/:pID' element={<PlaylistUpdateForm />} />
+          <Route path='/playList' element={<PlaylistComponent />} />
+          <Route path='/playListDetail/:pid' element={<PlaylistDetail />} />
         </Routes>
       </BrowserRouter>
   );
