@@ -7,7 +7,6 @@ import Profile from './Profile/Profile';
 import AddSongArtist from './Artist/AddSong';
 import ManageTableArtist from './Artist/ManagerSong';
 import SongList from './SongLists/SongList';
-// ????
 
 function App() {
   return (
