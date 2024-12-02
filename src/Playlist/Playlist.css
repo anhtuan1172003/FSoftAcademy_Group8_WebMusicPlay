@@ -1,0 +1,14 @@
+.card-img-top {
+    width: 284px;
+    height: 284px;
+    object-fit: cover;
+  }
+  .playlist-card-img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .align-items-center {
+    display: flex;
+    align-items: center;
+  }

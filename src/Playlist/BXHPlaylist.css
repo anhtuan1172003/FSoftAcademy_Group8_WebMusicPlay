@@ -1,0 +1,13 @@
+.album-card-img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .align-items-center {
+    display: flex;
+    align-items: center;
+  }
+  .bxh-img{
+    padding-top: 0
+    ;
+  }
