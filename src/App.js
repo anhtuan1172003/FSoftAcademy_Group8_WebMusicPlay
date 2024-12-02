@@ -10,7 +10,8 @@ import AddSongArtist from './Artist/AddSong';
 import ManageTableArtist from './Artist/ManagerSong';
 import Ranking from './BXH/BXH';
 import Album from './Album/Album';
-
+import AdminDashboard from './dashboard/AdminDashboard'
+import ArtistDashboard from './dashboard/ArtistDashboard'
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
           <Route path='/ManageTableArtist' element={<ManageTableArtist />} />
           <Route path='/BXH' element={<Ranking />} />
           <Route path='/Album' element={<Album />} />
+          <Route path="/adminDashboard" element={<AdminDashboard />} />
+          <Route path="/artistDashboard" element={<ArtistDashboard />} />
         </Routes>
       </BrowserRouter>
   );
