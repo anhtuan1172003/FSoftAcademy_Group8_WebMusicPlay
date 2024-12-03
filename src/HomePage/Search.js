@@ -1,10 +1,10 @@
 import { Container, Row, Col, Form, InputGroup, Card } from 'react-bootstrap';
-import Footer from './Footer';
 import BXH from './BXH';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
-import Headerhomepage from './Header';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 export default function Search() {
     const [songLists, setSongLists] = useState([]);
@@ -26,7 +26,7 @@ export default function Search() {
     return (
         <Container>
             <Row>
-                <Headerhomepage />
+                <Header/>
             </Row>
             <Container style={{ marginTop: "50px" }}>
                 <Row>
@@ -65,7 +65,7 @@ export default function Search() {
                 </Row>
             </Container>
             <Row>
-                <Footer />
+                <Footer/>
             </Row>
         </Container>
     );

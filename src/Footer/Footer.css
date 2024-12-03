@@ -1,6 +1,7 @@
 .row.footer{
     margin-top: 10px;
     background-color: antiquewhite;
+    width: 100%;
 }
 .icon {
     font-size: 2rem;
