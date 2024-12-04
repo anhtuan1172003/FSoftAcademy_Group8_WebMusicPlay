@@ -1,0 +1,35 @@
+.premium-subscription {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .plan-selection {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .plan-selection button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .plan-selection button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .subscription-benefits {
+    margin-bottom: 20px;
+  }
+  
+  .subscription-benefits ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .subscription-benefits li {
+    margin-bottom: 10px;
+  }
