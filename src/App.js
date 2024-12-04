@@ -18,6 +18,8 @@ import PlaylistUpdateForm from './Playlist/editPlayList';
 import PlaylistComponent from './Playlist/Playlist';
 import PlaylistDetail from './Playlist/PlaylistDetail';
 import Search from './HomePage/Search';
+import MusicPlayer from './MusicPlayer';
+
 
 function App() {
   return (
@@ -44,6 +46,8 @@ function App() {
           <Route path='/playListDetail/:pid' element={<PlaylistDetail />} />
           <Route path='/Search/:search' element={<Search />} />
         </Routes>
+        <MusicPlayer />
+
       </BrowserRouter>
   );
 }
