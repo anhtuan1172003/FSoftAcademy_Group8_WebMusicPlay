@@ -1,4 +1,4 @@
-import { Button, Container, Form, Nav, Navbar, Col, Row, Image, Carousel, NavDropdown, InputGroup } from 'react-bootstrap'
+import { Container, Col, Row} from 'react-bootstrap'
 import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import Main from './Main';

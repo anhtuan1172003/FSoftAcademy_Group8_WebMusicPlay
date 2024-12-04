@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import React from 'react'
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line }
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer}
     from 'recharts';
 import './dash.css'
 import HeaderArtist from '../Artist/HeaderArtist';

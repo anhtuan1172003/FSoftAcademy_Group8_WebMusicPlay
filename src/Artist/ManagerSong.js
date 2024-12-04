@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container, Form, Nav, Navbar, Col, Row, Image, Carousel, NavDropdown, InputGroup, Dropdown, Table } from 'react-bootstrap';
+import { Button, Container, Form, Col, Row, InputGroup, Table } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import HeaderAt from './HeaderArtist';
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import React from 'react'
 import { BsMusicNoteBeamed, BsMicFill, BsPeopleFill, BsStarFill }
   from 'react-icons/bs'
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line }
+import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line }
   from 'recharts';
 import { Link, NavLink } from "react-router-dom";
 import './dash.css'

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button, Container, Form, Nav, Navbar, Col, Row, Image, Carousel, NavDropdown, InputGroup, Dropdown } from 'react-bootstrap';
+import { Button, Container, Form, Nav, Navbar, Row, Image, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
