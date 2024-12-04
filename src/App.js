@@ -19,7 +19,7 @@ import PlaylistComponent from './Playlist/Playlist';
 import PlaylistDetail from './Playlist/PlaylistDetail';
 import Search from './HomePage/Search';
 import MusicPlayer from './MusicPlayer';
-
+import Checkout from './checkout';
 
 function App() {
   return (
@@ -45,6 +45,7 @@ function App() {
           <Route path='/playList' element={<PlaylistComponent />} />
           <Route path='/playListDetail/:pid' element={<PlaylistDetail />} />
           <Route path='/Search/:search' element={<Search />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
         <MusicPlayer />
 
