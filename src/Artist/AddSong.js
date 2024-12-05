@@ -107,7 +107,7 @@ export default function AddSongArtist() {
             const newSong = {
                 title: title.trim(),
                 imgSrc: img,
-                audioSrc: audio, // URL bài hát
+                src: audio, // URL bài hát
                 artistID: loggedInArtist.id,
                 plays: 0,
                 AlbumID: parseInt(albumId),
