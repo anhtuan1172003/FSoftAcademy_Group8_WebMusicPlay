@@ -8,7 +8,7 @@ export default function Album() {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    fetch(`https://yl28wx-8090.csb.app/albums`)
+    fetch(`https://yvkjyc-8080.csb.app/albums`)
       .then(res => res.json())
       .then(data => setAlbums(data))
       .catch(e => console.log(e));

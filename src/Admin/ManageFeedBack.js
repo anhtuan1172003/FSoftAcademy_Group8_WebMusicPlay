@@ -12,7 +12,7 @@ export default function ManageFB() {
 
     useEffect(() => {
         // Fetch phản hồi
-        fetch('https://yl28wx-8090.csb.app/feedback')
+        fetch('https://yvkjyc-8080.csb.app/feedback')
             .then(response => response.json())
             .then(data => {
                 setFb(data);
@@ -21,13 +21,13 @@ export default function ManageFB() {
             .catch(error => console.error('Error fetching feedback:', error));
 
         // Fetch danh sách người dùng
-        fetch('https://yl28wx-8090.csb.app/users')
+        fetch('https://yvkjyc-8080.csb.app/users')
             .then(response => response.json())
             .then(data => setUsers(data))
             .catch(error => console.error('Error fetching users:', error));
 
         // Fetch danh sách bài hát
-        fetch('https://yl28wx-8090.csb.app/listsongs')
+        fetch('https://yvkjyc-8080.csb.app/listsongs')
             .then(response => response.json())
             .then(data => setSongs(data))
             .catch(error => console.error('Error fetching songs:', error));
@@ -52,7 +52,7 @@ export default function ManageFB() {
 
         if (isConfirmed) {
             try {
-                const response = await fetch(`https://yl28wx-8090.csb.app/feedback/${feedbackId}`, {
+                const response = await fetch(`https://yvkjyc-8080.csb.app/feedback/${feedbackId}`, {
                     method: 'DELETE',
                 });
 

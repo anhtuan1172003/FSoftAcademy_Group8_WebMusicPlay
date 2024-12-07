@@ -22,13 +22,13 @@ const ManageTableArtist = () => {
     }
 
     // Fetch categories
-    fetch("https://yl28wx-8090.csb.app/categories")
+    fetch("https://yvkjyc-8080.csb.app/categories")
       .then(res => res.json())
       .then(result => setCategories(result))
       .catch(error => console.log(error));
 
     // Fetch songs
-    fetch('https://yl28wx-8090.csb.app/listsongs')
+    fetch('https://yvkjyc-8080.csb.app/listsongs')
       .then(response => response.json())
       .then(data => {
         let filteredSongs = data;
@@ -56,7 +56,7 @@ const ManageTableArtist = () => {
 
   const handleDelete = (songId) => {
     if (window.confirm("Do you want to delete?")) {
-      fetch("https://yl28wx-8090.csb.app/listsongs/" + songId, { method: "DELETE" })
+      fetch("https://yvkjyc-8080.csb.app/listsongs/" + songId, { method: "DELETE" })
         .then(() => {
           alert("Delete success!");
           // Refresh the songs list instead of reloading the page

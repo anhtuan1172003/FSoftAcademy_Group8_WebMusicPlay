@@ -37,7 +37,7 @@ const PlaylistAddForm = () => {
     };
 
     useEffect(() => {
-        fetch(`https://yl28wx-8090.csb.app/categories`)
+        fetch(`https://yvkjyc-8080.csb.app/categories`)
             .then(res => res.json())
             .then(data => setCategory(data))
             .catch(e => console.log(e));
@@ -45,7 +45,7 @@ const PlaylistAddForm = () => {
 
     useEffect(() => {
         if (songSearch.trim() !== '') {
-            fetch(`https://yl28wx-8090.csb.app/listsongs`)
+            fetch(`https://yvkjyc-8080.csb.app/listsongs`)
                 .then(res => res.json())
                 .then(data => {
                     const filteredSongs = data.filter(p => p.title.toLowerCase().includes(songSearch.toLowerCase()));
@@ -67,7 +67,7 @@ const PlaylistAddForm = () => {
             description: description,
             trackid: songIds
         };
-        fetch("https://yl28wx-8090.csb.app/playlist", {
+        fetch("https://yvkjyc-8080.csb.app/playlist", {
             method: "POST",
             body: JSON.stringify(newPlayList),
             headers: {

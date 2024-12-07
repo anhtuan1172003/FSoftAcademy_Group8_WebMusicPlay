@@ -8,7 +8,7 @@ const PlaylistComponent = () => {
   const [playlist, setPlaylist] = useState([]);
   
   useEffect(() => {
-    fetch(`https://yl28wx-8090.csb.app/playlist/`)
+    fetch(`https://yvkjyc-8080.csb.app/playlist/`)
       .then(res => res.json())
       .then(data => setPlaylist(data))
       .catch(e => console.log(e));

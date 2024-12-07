@@ -10,7 +10,7 @@ function ArtistDashboard() {
 
     useEffect(() => {
         // Fetch data from API
-        fetch('https://yl28wx-8090.csb.app/listsongs')
+        fetch('https://yvkjyc-8080.csb.app/listsongs')
             .then(response => response.json())
             .then(data => {
                 setListSong(data); // Set fetched data to state

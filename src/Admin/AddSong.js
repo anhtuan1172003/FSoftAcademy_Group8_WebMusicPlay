@@ -18,7 +18,7 @@ export default function AddSong() {
     const [artist, setArtist] = useState([]);
 
     useEffect(() => {
-        fetch(`https://yl28wx-8090.csb.app/listsongs`)
+        fetch(`https://yvkjyc-8080.csb.app/listsongs`)
             .then(res => res.json())
             .then(data => {
                 setSong(data.id)
@@ -35,16 +35,16 @@ export default function AddSong() {
             .catch(e => console.log(e))
 
 
-        fetch("https://yl28wx-8090.csb.app/categories")
+        fetch("https://yvkjyc-8080.csb.app/categories")
             .then(res => res.json())
             .then(result => setCategories(result))
             .catch(error => console.log(error));
-        fetch("https://yl28wx-8090.csb.app/artist")
+        fetch("https://yvkjyc-8080.csb.app/artist")
             .then(res => res.json())
             .then(result => setArtist(result))
             .catch(error => console.log(error));
 
-        fetch("https://yl28wx-8090.csb.app/albums")
+        fetch("https://yvkjyc-8080.csb.app/albums")
             .then(res => res.json())
             .then(result => setAlbum(result))
 
@@ -77,7 +77,7 @@ export default function AddSong() {
 
             };
 
-            fetch("https://yl28wx-8090.csb.app/listsongs", {
+            fetch("https://yvkjyc-8080.csb.app/listsongs", {
                 method: "POST",
                 body: JSON.stringify(newSong),
                 headers: {

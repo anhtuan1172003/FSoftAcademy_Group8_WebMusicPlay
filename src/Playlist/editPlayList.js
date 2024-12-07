@@ -36,7 +36,7 @@ const PlaylistUpdateForm = () => {
     };
 
     useEffect(() => {
-        fetch(`https://yl28wx-8090.csb.app/playlist/${pID}`)
+        fetch(`https://yvkjyc-8080.csb.app/playlist/${pID}`)
             .then(res => res.json())
             .then(data => {
                 setPlaylistName(data.title);
@@ -49,7 +49,7 @@ const PlaylistUpdateForm = () => {
     }, [pID]);
 
     useEffect(() => {
-        fetch(`https://yl28wx-8090.csb.app/listsongs`)
+        fetch(`https://yvkjyc-8080.csb.app/listsongs`)
             .then(res => res.json())
             .then(data => {
                 console.log(trackid)
@@ -62,7 +62,7 @@ const PlaylistUpdateForm = () => {
 
     useEffect(() => {
         if (songSearch.trim() !== '') {
-            fetch(`https://yl28wx-8090.csb.app/listsongs`)
+            fetch(`https://yvkjyc-8080.csb.app/listsongs`)
                 .then(res => res.json())
                 .then(data => {
                     const filteredSongs = data.filter(p => p.title.toLowerCase().includes(songSearch.toLowerCase()));
@@ -84,7 +84,7 @@ const PlaylistUpdateForm = () => {
             description: description,
             trackid: songIds
         };
-        fetch(`https://yl28wx-8090.csb.app/playlist/${pID}`, {
+        fetch(`https://yvkjyc-8080.csb.app/playlist/${pID}`, {
             method: "PUT",
             body: JSON.stringify(newPlayList),
             headers: {
