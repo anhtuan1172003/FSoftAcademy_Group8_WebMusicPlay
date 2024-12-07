@@ -9,7 +9,7 @@ const ManageAlbums = () => {
   const [currentAlbum, setCurrentAlbum] = useState({ id: '', title: '', cover: '', cateId: '' });
 
   useEffect(() => {
-    fetch('http://localhost:9999/albums')
+    fetch('https://yl28wx-8090.csb.app/albums')
       .then(response => response.json())
       .then(data => setAlbums(data))
       .catch(error => console.error('Error fetching albums:', error));
@@ -34,7 +34,7 @@ const ManageAlbums = () => {
 
     const updatedAlbum = { ...currentAlbum, id: newId.toString() };
     const method = currentAlbum.id ? 'PUT' : 'POST';
-    const url = currentAlbum.id ? `http://localhost:9999/albums/${currentAlbum.id}` : 'http://localhost:9999/albums';
+    const url = currentAlbum.id ? `https://yl28wx-8090.csb.app/albums/${currentAlbum.id}` : 'https://yl28wx-8090.csb.app/albums';
 
     fetch(url, {
       method: method,
@@ -55,7 +55,7 @@ const ManageAlbums = () => {
 
   const handleDelete = (id) => {
     if (window.confirm('Do you want to delete this album?')) {
-      fetch(`http://localhost:9999/albums/${id}`, { method: 'DELETE' })
+      fetch(`https://yl28wx-8090.csb.app/albums/${id}`, { method: 'DELETE' })
         .then(() => {
           alert('DELETE success');
           setAlbums(albums.filter(album => album.id !== id));
