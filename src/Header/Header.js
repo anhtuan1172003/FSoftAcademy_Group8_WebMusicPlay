@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button, Container, Form, Nav, Navbar, Col, Row, Image, Carousel, NavDropdown, InputGroup, Dropdown } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+
 import './Header.css';
 
 export default function Header() {
