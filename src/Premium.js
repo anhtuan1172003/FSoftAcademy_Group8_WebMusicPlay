@@ -14,7 +14,7 @@ function PremiumSubscription() {
   };
   const updateUserPremiumStatus = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:9999/users/${userId}`, {
+      const response = await fetch(`https://yl28wx-8090.csb.app/users/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ function PremiumSubscription() {
     };
 
     // Save transaction
-    const transactionResponse = await fetch('http://localhost:9999/transaction_history', {
+    const transactionResponse = await fetch('https://yl28wx-8090.csb.app/transaction_history', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

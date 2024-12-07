@@ -24,7 +24,6 @@ import Checkout from './checkout';
 import PremiumSubscription from './Premium';
 import AdminDashboard from './dashboard/AdminDashboard'
 import ArtistDashboard from './dashboard/ArtistDashboard'
-import './index.css';
 import LoginArtist from './Login/LoginArtist';
 import ManageTableArtist from './Artist/ManagerSong';
 import AddSongArtist from './Artist/AddSong';

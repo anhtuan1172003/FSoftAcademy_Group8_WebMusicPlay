@@ -8,7 +8,7 @@ const BXH = () => {
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:9999/listsongs`)
+    fetch(`https://yl28wx-8090.csb.app/listsongs`)
       .then(res => res.json())
       .then(data => {
         const acceptedSongs = data.filter(song => song.accept === 'yes');

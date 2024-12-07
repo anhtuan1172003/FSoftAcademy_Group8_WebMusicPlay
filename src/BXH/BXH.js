@@ -27,9 +27,9 @@ const Ranking = () => {
   const fetchData = useCallback(async () => {
     try {
       const [artistsRes, songsRes, likesRes] = await Promise.all([
-        fetch('http://localhost:9999/artist').then(res => res.json()),
-        fetch('http://localhost:9999/listsongs').then(res => res.json()),
-        user ? fetch(`http://localhost:9999/like?userid=${user.id}`).then(res => res.json()) : Promise.resolve([])
+        fetch('https://yl28wx-8090.csb.app/artist').then(res => res.json()),
+        fetch('https://yl28wx-8090.csb.app/listsongs').then(res => res.json()),
+        user ? fetch(`https://yl28wx-8090.csb.app/like?userid=${user.id}`).then(res => res.json()) : Promise.resolve([])
       ]);
 
       setArtists(artistsRes);
@@ -69,11 +69,11 @@ const Ranking = () => {
 
     try {
       if (song.isLiked) {
-        await fetch(`http://localhost:9999/like/${song.likeId}`, { method: 'DELETE' });
+        await fetch(`https://yl28wx-8090.csb.app/like/${song.likeId}`, { method: 'DELETE' });
         song.isLiked = false;
         song.likeId = null;
       } else {
-        const response = await fetch('http://localhost:9999/like', {
+        const response = await fetch('https://yl28wx-8090.csb.app/like', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userid: user.id, trackid: song.id }),
