@@ -11,7 +11,7 @@ export default function Register() {
     const [users, setUsers] = useState([]);
     const [agreedToTerms, setAgreedToTerms] = useState(false);
     useEffect(() => {
-        fetch(`https://yl28wx-8090.csb.app/users`)
+        fetch(`http://localhost:9999/users`)
             .then(res => res.json())
             .then(data => setUsers(data))
             .catch(e => console.log(e));
@@ -39,7 +39,7 @@ export default function Register() {
                 password: password,
                 RoleId: "2"
             };
-            fetch("https://yl28wx-8090.csb.app/users", {  
+            fetch("http://localhost:9999/users", {  
                 method: "POST",
                 body: JSON.stringify(newUsers),
                 headers: {

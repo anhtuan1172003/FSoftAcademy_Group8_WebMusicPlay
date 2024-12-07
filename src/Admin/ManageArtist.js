@@ -10,13 +10,13 @@ const ManageArtists = () => {
   const [currentArtist, setCurrentArtist] = useState({ id: '', name: '', cateId: '', Gender: '', dob: '' });
 
   useEffect(() => {
-    fetch('https://yl28wx-8090.csb.app/artist')
+    fetch('http://localhost:9999/artist')
       .then(response => response.json())
       .then(data => setArtists(data))
       .catch(error => console.error('Error fetching data:', error));
 
     // Fetch categories
-    fetch('https://yl28wx-8090.csb.app/categories')
+    fetch('http://localhost:9999/categories')
       .then(response => response.json())
       .then(data => setCategories(data))
       .catch(error => console.error('Error fetching categories:', error));
@@ -41,7 +41,7 @@ const ManageArtists = () => {
 
     const updatedArtist = { ...currentArtist, id: newId.toString() };
     const method = currentArtist.id ? 'PUT' : 'POST';
-    const url = currentArtist.id ? `https://yl28wx-8090.csb.app/artist/${currentArtist.id}` : 'https://yl28wx-8090.csb.app/artist';
+    const url = currentArtist.id ? `http://localhost:9999/artist/${currentArtist.id}` : 'http://localhost:9999/artist';
 
     fetch(url, {
       method: method,
@@ -62,7 +62,7 @@ const ManageArtists = () => {
 
   const handleDelete = (id) => {
     if (window.confirm('Do you want delete?')) {
-      fetch(`https://yl28wx-8090.csb.app/artist/${id}`, { method: 'DELETE' })
+      fetch(`http://localhost:9999/artist/${id}`, { method: 'DELETE' })
         .then(() => {
           alert('DELETE success');
           setArtists(artists.filter(artist => artist.id !== id));
