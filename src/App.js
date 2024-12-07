@@ -1,21 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-<<<<<<< Updated upstream
-import HomePage from './HomePage/Homepage';
-import Login from './Login/Login';
-import Register from './Register/Register';
-import Profile from './Profile/Profile';
-import SongDetail from './SongDetails/SongDetails';
-<<<<<<< Updated upstream
-
-
-=======
-import AddSongArtist from './Artist/AddSong';
-import ManageTableArtist from './Artist/ManagerSong';
-=======
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import HomePage from './HomePage/homepage';
->>>>>>> Stashed changes
 import Ranking from './BXH/BXH';
 import Album from './Album/Album';
 import SongDetail from './SongDetails/SongDetails';
@@ -38,13 +24,11 @@ import Checkout from './checkout';
 import PremiumSubscription from './Premium';
 import AdminDashboard from './dashboard/AdminDashboard'
 import ArtistDashboard from './dashboard/ArtistDashboard'
+import './index.css';
 import LoginArtist from './Login/LoginArtist';
 import ManageTableArtist from './Artist/ManagerSong';
 import AddSongArtist from './Artist/AddSong';
 import PlaylistDetail from './Playlist/PlaylistDetail';
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 import Search from './HomePage/Search';
 import ManageFB from './Admin/ManageFeedBack';
 
@@ -53,7 +37,6 @@ const initialOptions = {
   currency: "USD",
   intent: "capture",
 };
->>>>>>> Stashed changes
 
 function App() {
   return (
@@ -62,18 +45,6 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/Home' element={<HomePage />} />
-<<<<<<< Updated upstream
-          <Route path='/Login' element={<Login />} />
-          <Route path='/Register' element={<Register />} />
-          <Route path='/profile/:uID' element={<Profile />} />
-          <Route path='/userprofile/:uID' element={<Profile />} />
-          <Route path='/song/:sID' element={<SongDetail />} />
-<<<<<<< Updated upstream
-=======
-          <Route path='/addSongA' element={<AddSongArtist />} />
-          <Route path='/ManageTableArtist' element={<ManageTableArtist />} />
-=======
->>>>>>> Stashed changes
           <Route path='/BXH' element={<Ranking />} />
           <Route path='/Album' element={<Album />} />
           <Route path='/Login' element={<Login />} />
@@ -93,17 +64,11 @@ function App() {
           <Route path='/ManageArtist' element={<ManageArtists />} />
           <Route path='/playList' element={<PlaylistComponent />} />
           <Route path='/playListDetail/:pid' element={<PlaylistDetail />} />
-<<<<<<< Updated upstream
-          
->>>>>>> Stashed changes
-        </Routes>
-=======
           <Route path="/listsongs/:id" element={<SongDetailad />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path='/premium' element={<PremiumSubscription />} />
           <Route path="/adminDashboard" element={<AdminDashboard />} />
           <Route path="/artistDashboard" element={<ArtistDashboard />} />
-
           <Route path='/premium/:uID' element={<PremiumSubscription />} />
           <Route path='/logina' element={<LoginArtist />} />
           <Route path='/ManageTableArtist' element={<ManageTableArtist />} />
@@ -112,7 +77,6 @@ function App() {
           <Route path='/ManageFeedback' element={<ManageFB />} />
         </Routes>
         <MusicPlayer />
->>>>>>> Stashed changes
       </BrowserRouter>
     </PayPalScriptProvider>
   );
