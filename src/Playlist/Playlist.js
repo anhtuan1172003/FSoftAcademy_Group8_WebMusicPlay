@@ -8,7 +8,11 @@ const PlaylistComponent = () => {
   const [playlist, setPlaylist] = useState([]);
   
   useEffect(() => {
+<<<<<<< Updated upstream
     fetch(`http://localhost:9999/playlist/`)
+=======
+    fetch(`https://yl28wx-8090.csb.app/playlist/`)
+>>>>>>> Stashed changes
       .then(res => res.json())
       .then(data => setPlaylist(data))
       .catch(e => console.log(e));
@@ -16,7 +20,11 @@ const PlaylistComponent = () => {
 
   return (
     <Container>
+<<<<<<< Updated upstream
       <Header/>
+=======
+      <Header />
+>>>>>>> Stashed changes
       <div className="playlist-container">
         <h2 className="playlist-title">Playlist</h2>
         <Row>

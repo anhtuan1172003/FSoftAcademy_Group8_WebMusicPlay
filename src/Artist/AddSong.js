@@ -26,13 +26,13 @@ export default function AddSongArtist() {
             setLoggedInArtist(user);
 
             // Fetch categories
-            fetch("http://localhost:9999/categories")
+            fetch("https://yl28wx-8090.csb.app/categories")
                 .then((res) => res.json())
                 .then((result) => setCategories(result))
                 .catch((error) => console.log(error));
 
             // Fetch albums by the logged-in artist
-            fetch(`http://localhost:9999/albums?artistID=${user.id}`)
+            fetch(`https://yl28wx-8090.csb.app/albums?artistID=${user.id}`)
                 .then((res) => res.json())
                 .then((result) => setAlbums(result))
                 .catch((error) => console.log(error));
@@ -115,7 +115,7 @@ export default function AddSongArtist() {
                 categoryId: parseInt(categoryId),
             };
 
-            fetch("http://localhost:9999/listsongs", {
+            fetch("https://yl28wx-8090.csb.app/listsongs", {
                 method: "POST",
                 body: JSON.stringify(newSong),
                 headers: {

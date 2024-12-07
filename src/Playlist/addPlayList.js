@@ -37,7 +37,11 @@ const PlaylistAddForm = () => {
     };
 
     useEffect(() => {
+<<<<<<< Updated upstream
         fetch(`http://localhost:9999/categories`)
+=======
+        fetch(`https://yl28wx-8090.csb.app/categories`)
+>>>>>>> Stashed changes
             .then(res => res.json())
             .then(data => setCategory(data))
             .catch(e => console.log(e));
@@ -45,7 +49,11 @@ const PlaylistAddForm = () => {
 
     useEffect(() => {
         if (songSearch.trim() !== '') {
+<<<<<<< Updated upstream
             fetch(`http://localhost:9999/listsongs`)
+=======
+            fetch(`https://yl28wx-8090.csb.app/listsongs`)
+>>>>>>> Stashed changes
                 .then(res => res.json())
                 .then(data => {
                     const filteredSongs = data.filter(p => p.title.toLowerCase().includes(songSearch.toLowerCase()));
@@ -67,7 +75,11 @@ const PlaylistAddForm = () => {
             description: description,
             trackid: songIds
         };
+<<<<<<< Updated upstream
         fetch("http://localhost:9999/playlist", {
+=======
+        fetch("https://yl28wx-8090.csb.app/playlist", {
+>>>>>>> Stashed changes
             method: "POST",
             body: JSON.stringify(newPlayList),
             headers: {

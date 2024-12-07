@@ -36,7 +36,11 @@ const PlaylistUpdateForm = () => {
     };
 
     useEffect(() => {
+<<<<<<< Updated upstream
         fetch(`http://localhost:9999/playlist/${pID}`)
+=======
+        fetch(`https://yl28wx-8090.csb.app/playlist/${pID}`)
+>>>>>>> Stashed changes
             .then(res => res.json())
             .then(data => {
                 setPlaylistName(data.title);
@@ -49,7 +53,11 @@ const PlaylistUpdateForm = () => {
     }, [pID]);
 
     useEffect(() => {
+<<<<<<< Updated upstream
         fetch(`http://localhost:9999/listsongs`)
+=======
+        fetch(`https://yl28wx-8090.csb.app/listsongs`)
+>>>>>>> Stashed changes
             .then(res => res.json())
             .then(data => {
                 console.log(trackid)
@@ -62,7 +70,11 @@ const PlaylistUpdateForm = () => {
 
     useEffect(() => {
         if (songSearch.trim() !== '') {
+<<<<<<< Updated upstream
             fetch(`http://localhost:9999/listsongs`)
+=======
+            fetch(`https://yl28wx-8090.csb.app/listsongs`)
+>>>>>>> Stashed changes
                 .then(res => res.json())
                 .then(data => {
                     const filteredSongs = data.filter(p => p.title.toLowerCase().includes(songSearch.toLowerCase()));
@@ -84,7 +96,11 @@ const PlaylistUpdateForm = () => {
             description: description,
             trackid: songIds
         };
+<<<<<<< Updated upstream
         fetch(`http://localhost:9999/playlist/${pID}`, {
+=======
+        fetch(`https://yl28wx-8090.csb.app/playlist/${pID}`, {
+>>>>>>> Stashed changes
             method: "PUT",
             body: JSON.stringify(newPlayList),
             headers: {
@@ -113,7 +129,11 @@ const PlaylistUpdateForm = () => {
     return (
         <Container>
         <Row>
+<<<<<<< Updated upstream
                 <Header/>
+=======
+                <Header />
+>>>>>>> Stashed changes
             </Row>
         <div className="form-container">
             <h1 className="form-title">CẬP NHẬT PLAYLIST</h1>

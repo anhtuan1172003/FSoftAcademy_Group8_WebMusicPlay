@@ -8,7 +8,7 @@ export default function Main() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:9999/listsongs`)
+    fetch(`https://yl28wx-8090.csb.app/listsongs`)
       .then(res => res.json())
       .then(data => {
         setSong(data);
@@ -17,7 +17,7 @@ export default function Main() {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:9999/categories`)
+    fetch(`https://yl28wx-8090.csb.app/categories`)
       .then(res => res.json())
       .then(data => {
         setCategories(data);
