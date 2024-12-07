@@ -15,14 +15,14 @@ export default function Profile() {
   const [artists, setArtists] = useState([]);
 
   const fetchArtists = useCallback(() => {
-    fetch(`https://yl28wx-8090.csb.app/artist`)
+    fetch(`http://localhost:9999/artist`)
       .then(res => res.json())
       .then(data => setArtists(data))
       .catch(e => console.log(e));
   }, []);
 
   const fetchPlaylists = useCallback(() => {
-    fetch(`https://yl28wx-8090.csb.app/playlist`)
+    fetch(`http://localhost:9999/playlist`)
       .then(res => res.json())
       .then(data => {
         const data1 = data.filter(p => p.userid === uID);
@@ -32,7 +32,7 @@ export default function Profile() {
   }, [uID]);
 
   const fetchLikedSongs = useCallback(() => {
-    fetch(`https://yl28wx-8090.csb.app/like`)
+    fetch(`http://localhost:9999/like`)
       .then(res => res.json())
       .then(data => {
         const likedData = data.filter(l => l.userid === uID);
@@ -42,7 +42,7 @@ export default function Profile() {
   }, [uID]);
 
   const fetchSongDetails = useCallback(() => {
-    fetch(`https://yl28wx-8090.csb.app/listsongs`)
+    fetch(`http://localhost:9999/listsongs`)
       .then(res => res.json())
       .then(data => {
         const filteredSongs = data.filter(song => likedSongs.some(ls => ls.trackid == song.id));
@@ -62,7 +62,7 @@ export default function Profile() {
   }, [fetchSongDetails]);
 
   const handleDeletePlaylist = (id) => {
-    fetch(`https://yl28wx-8090.csb.app/playlist/${id}`, {
+    fetch(`http://localhost:9999/playlist/${id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
@@ -73,7 +73,7 @@ export default function Profile() {
   };
 
   const handleDeleteLikeSong = (likeId) => {
-    fetch(`https://yl28wx-8090.csb.app/like/${likeId}`, {
+    fetch(`http://localhost:9999/like/${likeId}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
@@ -93,7 +93,7 @@ export default function Profile() {
   }, [artists]);
 
   useEffect(() => {
-    fetch(`https://yl28wx-8090.csb.app/users/${uID}`)
+    fetch(`http://localhost:9999/users/${uID}`)
       .then(res => res.json())
       .then(data => setUser(data))
       .catch(e => console.log(e));

@@ -23,7 +23,7 @@ import Header from '../Header/Header';
             handleSessionStorage();
         }, []);
         useEffect(() => {
-            fetch(`https://yl28wx-8090.csb.app/feedback?songId=${sID}`)
+            fetch(`http://localhost:9999/feedback?songId=${sID}`)
                 .then(res => res.json())
                 .then(data => setFeedback(data))
                 .catch(e => console.log(e));
@@ -47,7 +47,7 @@ import Header from '../Header/Header';
             if (!newFeedback.trim()) return;
     
             try {
-                const response = await fetch('https://yl28wx-8090.csb.app/feedback', {
+                const response = await fetch('http://localhost:9999/feedback', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -73,11 +73,11 @@ import Header from '../Header/Header';
         const fetchData = useCallback(async () => {
             try {
                 const [artistsRes, albumsRes, songRes, allSongsRes, likesRes] = await Promise.all([
-                    fetch(`https://yl28wx-8090.csb.app/artist`),
-                    fetch(`https://yl28wx-8090.csb.app/albums`),
-                    fetch(`https://yl28wx-8090.csb.app/listsongs/${sID}`),
-                    fetch(`https://yl28wx-8090.csb.app/listsongs`),
-                    user ? fetch(`https://yl28wx-8090.csb.app/like?userid=${user.id}`) : Promise.resolve({ json: () => [] })
+                    fetch(`http://localhost:9999/artist`),
+                    fetch(`http://localhost:9999/albums`),
+                    fetch(`http://localhost:9999/listsongs/${sID}`),
+                    fetch(`http://localhost:9999/listsongs`),
+                    user ? fetch(`http://localhost:9999/like?userid=${user.id}`) : Promise.resolve({ json: () => [] })
                 ]);
                 
                 const artistsData = await artistsRes.json();
@@ -122,11 +122,11 @@ import Header from '../Header/Header';
         const handleLike = async () => {
             try {
                 if (isLiked) {
-                    await fetch(`https://yl28wx-8090.csb.app/like/${likeId}`, { method: 'DELETE' });
+                    await fetch(`http://localhost:9999/like/${likeId}`, { method: 'DELETE' });
                     setIsLiked(false);
                     setLikeId(null);
                 } else {
-                    const response = await fetch('https://yl28wx-8090.csb.app/like', {
+                    const response = await fetch('http://localhost:9999/like', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ userid: user.id, trackid: parseInt(sID) }),
