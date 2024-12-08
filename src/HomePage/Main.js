@@ -36,7 +36,7 @@ export default function Main() {
               .map((song) => (
                 <Col key={song.id} xs={3}>
                   <Card>
-                    <Card.Img variant="top" src={song.imgSrc} style={{ width: "210px" }} />
+                    <Card.Img variant="top" src={song.imgSrc} style={{ width: "190px" }} />
                     <Card.Body>
                       <Card.Title>
                         <Link to={`/song/${song.id}`}><p>{song.title}</p></Link>

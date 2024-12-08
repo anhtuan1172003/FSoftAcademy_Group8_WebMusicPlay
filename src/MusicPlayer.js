@@ -35,12 +35,13 @@ const MusicPlayer = () => {
                     setPlays(data.plays ?? 0);
                     setViewIncremented(false);
                     setIsPremium(data?.premium ?? false);
-                    console.log(isPremium)
+                    
                 })
                 .catch(e => console.error(e));
         }
     }, [songId]);
 
+    console.log(songId);
     const incrementPlays = async () => {
         if (viewIncremented) return;
 
