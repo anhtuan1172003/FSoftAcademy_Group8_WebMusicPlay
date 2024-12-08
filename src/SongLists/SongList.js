@@ -73,13 +73,14 @@ export default function SongList() {
 
     useEffect(() => {
         fetchData();
-    }, [fetchData]);
+    }, []);
 
     useEffect(() => {
         setSongId(sid);
     }, [sid, setSongId]);
 
     const onSongClick = (id) => {
+        console.log(id)
         setCurrentPlayingId(id);
         handleSongClick(id);
     };
