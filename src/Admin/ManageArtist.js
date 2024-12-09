@@ -11,13 +11,13 @@
 //   const [currentArtist, setCurrentArtist] = useState({ id: '', name: '', cateId: '', Gender: '', dob: '' });
 
 //   useEffect(() => {
-//     fetch('http://localhost:9999/artist')
+//     fetch('https://dsqkll-8090.csb.app/artist')
 //       .then(response => response.json())
 //       .then(data => setArtists(data))
 //       .catch(error => console.error('Error fetching data:', error));
 
 //     // Fetch categories
-//     fetch('http://localhost:9999/categories')
+//     fetch('https://dsqkll-8090.csb.app/categories')
 //       .then(response => response.json())
 //       .then(data => setCategories(data))
 //       .catch(error => console.error('Error fetching categories:', error));
@@ -42,7 +42,7 @@
 
 //     const updatedArtist = { ...currentArtist, id: newId.toString() };
 //     const method = currentArtist.id ? 'PUT' : 'POST';
-//     const url = currentArtist.id ? `http://localhost:9999/artist/${currentArtist.id}` : 'http://localhost:9999/artist';
+//     const url = currentArtist.id ? `https://dsqkll-8090.csb.app/artist/${currentArtist.id}` : 'https://dsqkll-8090.csb.app/artist';
 
 //     fetch(url, {
 //       method: method,
@@ -63,7 +63,7 @@
 
 //   const handleDelete = (id) => {
 //     if (window.confirm('Do you want delete?')) {
-//       fetch(`http://localhost:9999/artist/${id}`, { method: 'DELETE' })
+//       fetch(`https://dsqkll-8090.csb.app/artist/${id}`, { method: 'DELETE' })
 //         .then(() => {
 //           alert('DELETE success');
 //           setArtists(artists.filter(artist => artist.id !== id));
@@ -229,12 +229,12 @@ const ManageArtists = () => {
   });
 
   useEffect(() => {
-    fetch('http://localhost:9999/artist')
+    fetch('https://dsqkll-8090.csb.app/artist')
       .then(response => response.json())
       .then(data => setArtists(data))
       .catch(error => console.error('Error fetching data:', error));
 
-    fetch('http://localhost:9999/categories')
+    fetch('https://dsqkll-8090.csb.app/categories')
       .then(response => response.json())
       .then(data => setCategories(data))
       .catch(error => console.error('Error fetching categories:', error));
@@ -258,8 +258,8 @@ const ManageArtists = () => {
     const updatedArtist = { ...currentArtist, id: newId };
     const method = currentArtist.id ? 'PUT' : 'POST';
     const url = currentArtist.id
-      ? `http://localhost:9999/artist/${currentArtist.id}`
-      : 'http://localhost:9999/artist';
+      ? `https://dsqkll-8090.csb.app/artist/${currentArtist.id}`
+      : 'https://dsqkll-8090.csb.app/artist';
   
     fetch(url, {
       method: method,
@@ -277,7 +277,7 @@ const ManageArtists = () => {
           artistId: data.id,
         };
   
-        fetch('http://localhost:9999/users', {
+        fetch('https://dsqkll-8090.csb.app/users', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json; charset=UTF-8' },
           body: JSON.stringify(userPayload),
@@ -302,7 +302,7 @@ const ManageArtists = () => {
 
   const handleDelete = id => {
     if (window.confirm('Do you want delete?')) {
-      fetch(`http://localhost:9999/artist/${id}`, { method: 'DELETE' })
+      fetch(`https://dsqkll-8090.csb.app/artist/${id}`, { method: 'DELETE' })
         .then(() => {
           alert('DELETE success');
           setArtists(artists.filter(artist => artist.id !== id));

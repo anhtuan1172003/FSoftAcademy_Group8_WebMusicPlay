@@ -8,7 +8,7 @@ import './Card.css';
 //   const [categories, setCategories] = useState([]);
 
 //   useEffect(() => {
-//     fetch(`http://localhost:9999/listsongs`)
+//     fetch(`https://dsqkll-8090.csb.app/listsongs`)
 //       .then(res => res.json())
 //       .then(data => {
 //         setSong(data);
@@ -17,7 +17,7 @@ import './Card.css';
 //   }, []);
 
 //   useEffect(() => {
-//     fetch(`http://localhost:9999/categories`)
+//     fetch(`https://dsqkll-8090.csb.app/categories`)
 //       .then(res => res.json())
 //       .then(data => {
 //         setCategories(data);
@@ -57,7 +57,7 @@ export default function Main() {
 
   useEffect(() => {
     // Fetch danh sách bài hát từ API
-    fetch(`http://localhost:9999/listsongs`)
+    fetch(`https://dsqkll-8090.csb.app/listsongs`)
       .then(res => res.json())
       .then(data => {
         setSongs(data); // Cập nhật state danh sách bài hát
@@ -67,7 +67,7 @@ export default function Main() {
 
   useEffect(() => {
     // Fetch danh sách thể loại từ API
-    fetch(`http://localhost:9999/categories`)
+    fetch(`https://dsqkll-8090.csb.app/categories`)
       .then(res => res.json())
       .then(data => {
         setCategories(data); // Cập nhật state danh sách thể loại

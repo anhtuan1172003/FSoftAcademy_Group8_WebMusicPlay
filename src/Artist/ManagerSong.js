@@ -22,13 +22,13 @@ const ManageTableArtist = () => {
     }
 
     // Fetch categories
-    fetch("http://localhost:9999/categories")
+    fetch("https://dsqkll-8090.csb.app/categories")
       .then(res => res.json())
       .then(result => setCategories(result))
       .catch(error => console.log(error));
 
     // Fetch songs
-    fetch('http://localhost:9999/listsongs')
+    fetch('https://dsqkll-8090.csb.app/listsongs')
       .then(response => response.json())
       .then(data => {
         let filteredSongs = data;
@@ -56,7 +56,7 @@ const ManageTableArtist = () => {
 
   const handleDelete = (songId) => {
     if (window.confirm("Do you want to delete?")) {
-      fetch("http://localhost:9999/listsongs/" + songId, { method: "DELETE" })
+      fetch("https://dsqkll-8090.csb.app/listsongs/" + songId, { method: "DELETE" })
         .then(() => {
           alert("Delete success!");
           // Refresh the songs list instead of reloading the page

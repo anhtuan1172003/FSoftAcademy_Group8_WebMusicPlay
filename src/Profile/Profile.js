@@ -15,14 +15,14 @@ export default function Profile() {
   const [artists, setArtists] = useState([]);
 
   const fetchArtists = useCallback(() => {
-    fetch(`http://localhost:9999/artist`)
+    fetch(`https://dsqkll-8090.csb.app/artist`)
       .then(res => res.json())
       .then(data => setArtists(data))
       .catch(e => console.log(e));
   }, []);
 
   const fetchPlaylists = useCallback(() => {
-    fetch(`http://localhost:9999/playlist`)
+    fetch(`https://dsqkll-8090.csb.app/playlist`)
       .then(res => res.json())
       .then(data => {
         const data1 = data.filter(p => p.userid === uID);
@@ -32,7 +32,7 @@ export default function Profile() {
   }, [uID]);
 
   const fetchLikedSongs = useCallback(() => {
-    fetch(`http://localhost:9999/like`)
+    fetch(`https://dsqkll-8090.csb.app/like`)
       .then(res => res.json())
       .then(data => {
         const likedData = data.filter(l => l.userid === uID);
@@ -42,7 +42,7 @@ export default function Profile() {
   }, [uID]);
 
   const fetchSongDetails = useCallback(() => {
-    fetch(`http://localhost:9999/listsongs`)
+    fetch(`https://dsqkll-8090.csb.app/listsongs`)
       .then(res => res.json())
       .then(data => {
         const filteredSongs = data.filter(song => likedSongs.some(ls => ls.trackid == song.id));
@@ -62,7 +62,7 @@ export default function Profile() {
   }, [fetchSongDetails]);
 
   const handleDeletePlaylist = (id) => {
-    fetch(`http://localhost:9999/playlist/${id}`, {
+    fetch(`https://dsqkll-8090.csb.app/playlist/${id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
@@ -73,7 +73,7 @@ export default function Profile() {
   };
 
   const handleDeleteLikeSong = (likeId) => {
-    fetch(`http://localhost:9999/like/${likeId}`, {
+    fetch(`https://dsqkll-8090.csb.app/like/${likeId}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
@@ -93,7 +93,7 @@ export default function Profile() {
   }, [artists]);
 
   useEffect(() => {
-    fetch(`http://localhost:9999/users/${uID}`)
+    fetch(`https://dsqkll-8090.csb.app/users/${uID}`)
       .then(res => res.json())
       .then(data => setUser(data))
       .catch(e => console.log(e));

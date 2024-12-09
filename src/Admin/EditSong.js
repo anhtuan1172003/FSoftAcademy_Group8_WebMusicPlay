@@ -26,7 +26,7 @@ export default function EditSong() {
     const [lyrics, setLyrics] = useState("")
 
     useEffect(() => {
-        fetch(`http://localhost:9999/listsongs/${eId}`)
+        fetch(`https://dsqkll-8090.csb.app/listsongs/${eId}`)
             .then(res => res.json())
             .then(data => {
                 setSongs(data)
@@ -42,15 +42,15 @@ export default function EditSong() {
             })
             .catch(e => console.log(e))
 
-        fetch("http://localhost:9999/categories")
+        fetch("https://dsqkll-8090.csb.app/categories")
             .then(res => res.json())
             .then(result => setCategories(result))
             .catch(error => console.log(error));
 
-        fetch("http://localhost:9999/albums")
+        fetch("https://dsqkll-8090.csb.app/albums")
             .then(res => res.json())
             .then(result => setAlbum(result));
-        fetch("http://localhost:9999/artist")
+        fetch("https://dsqkll-8090.csb.app/artist")
             .then(res => res.json())
             .then(result => setArtist(result))
             .catch(error => console.log(error));
@@ -82,7 +82,7 @@ export default function EditSong() {
                 categoryId: categoryId,
             };
 
-            fetch(`http://localhost:9999/listsongs/${eId}`, {
+            fetch(`https://dsqkll-8090.csb.app/listsongs/${eId}`, {
                 method: "PUT",
                 body: JSON.stringify(editSong),
                 headers: {

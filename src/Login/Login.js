@@ -10,7 +10,7 @@ export default function Login() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:9999/users`)
+        fetch(`https://dsqkll-8090.csb.app/users`)
             .then(res => res.json())
             .then(data => setUsers(data))
             .catch(e => console.log(e));

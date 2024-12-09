@@ -12,12 +12,12 @@ const ManageTable = () => {
 
   useEffect(() => {
     // Fetch categories from the backend
-    fetch("http://localhost:9999/artist")
+    fetch("https://dsqkll-8090.csb.app/artist")
       .then(res => res.json())
       .then(result => setArtist(result))
       .catch(error => console.log(error));
 
-    fetch("http://localhost:9999/categories")
+    fetch("https://dsqkll-8090.csb.app/categories")
       .then(res => res.json())
       .then(result => {
         setCategories(result);
@@ -25,7 +25,7 @@ const ManageTable = () => {
       .catch(error => console.log(error));
 
     // Fetch songs from the backend
-    fetch('http://localhost:9999/listsongs')
+    fetch('https://dsqkll-8090.csb.app/listsongs')
       .then(response => response.json())
       .then(data => {
         let filteredSongs = data;
@@ -49,7 +49,7 @@ const ManageTable = () => {
 
   const handleDelete = (songId) => {
     if (window.confirm("Do you want to delete?")) {
-      fetch("http://localhost:9999/listsongs/" + songId, { method: "DELETE" })
+      fetch("https://dsqkll-8090.csb.app/listsongs/" + songId, { method: "DELETE" })
         .then(() => {
           alert("Delete success!");
           window.location.reload();
@@ -64,7 +64,7 @@ const ManageTable = () => {
 
   const handleTogglePremium = async (songId, currentPremiumStatus) => {
     try {
-      const response = await fetch(`http://localhost:9999/listsongs/${songId}`, {
+      const response = await fetch(`https://dsqkll-8090.csb.app/listsongs/${songId}`, {
         method: "PATCH",
         headers: {
           'Content-Type': 'application/json',

@@ -18,7 +18,7 @@ function AdminDashboard() {
 
 
   useEffect(() => {
-    fetch('http://localhost:9999/listsongs')
+    fetch('https://dsqkll-8090.csb.app/listsongs')
       .then(response => response.json())
       .then(data => {
         console.log('Received data:', data); // Debug log
@@ -37,7 +37,7 @@ function AdminDashboard() {
       });
   }, []);
   useEffect(() => {
-    fetch('http://localhost:9999/artist')
+    fetch('https://dsqkll-8090.csb.app/artist')
       .then(response => response.json())
       .then(data => {
         console.log('Received data:', data); // Debug log
@@ -56,7 +56,7 @@ function AdminDashboard() {
       });
   }, []);
   useEffect(() => {
-    fetch('http://localhost:9999/users')
+    fetch('https://dsqkll-8090.csb.app/users')
       .then(response => response.json())
       .then(data => {
         console.log('Received data:', data); // Debug log
@@ -75,7 +75,7 @@ function AdminDashboard() {
       });
   }, []);
   useEffect(() => {
-    fetch('http://localhost:9999/transaction_history')
+    fetch('https://dsqkll-8090.csb.app/transaction_history')
       .then(response => response.json())
       .then(data => {
         console.log('Received data:', data); // Debug log
@@ -98,7 +98,7 @@ function AdminDashboard() {
 
   useEffect(() => {
     // Fetch data from API
-    fetch('http://localhost:9999/transaction_history')
+    fetch('https://dsqkll-8090.csb.app/transaction_history')
       .then(response => response.json())
       .then(data => {
         setData(data); // Set fetched data to state
@@ -139,7 +139,7 @@ function AdminDashboard() {
   // kiem tra user
   const [artist, setArtist] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:9999/artist`)
+    fetch(`https://dsqkll-8090.csb.app/artist`)
       .then(res => res.json())
       .then(data => setArtist(data))
       .catch(e => console.log(e));

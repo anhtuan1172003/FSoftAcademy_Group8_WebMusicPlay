@@ -40,7 +40,7 @@
 //     };
 
 //     useEffect(() => {
-//         fetch(`http://localhost:9999/playlist/${pID}`)
+//         fetch(`https://dsqkll-8090.csb.app/playlist/${pID}`)
 //             .then(res => res.json())
 //             .then(data => {
 //                 setPlaylistName(data.title);
@@ -53,7 +53,7 @@
 //     }, [pID]);
 
 //     useEffect(() => {
-//         fetch(`http://localhost:9999/listsongs`)
+//         fetch(`https://dsqkll-8090.csb.app/listsongs`)
 //             .then(res => res.json())
 //             .then(data => {
 //                 console.log(listsongid)
@@ -66,7 +66,7 @@
 
 //     useEffect(() => {
 //         if (songSearch.trim() !== '') {
-//             fetch(`http://localhost:9999/listsongs`)
+//             fetch(`https://dsqkll-8090.csb.app/listsongs`)
 //                 .then(res => res.json())
 //                 .then(data => {
 //                     const filteredSongs = data.filter(p => p.title.toLowerCase().includes(songSearch.toLowerCase()));
@@ -88,7 +88,7 @@
 //             description: description,
 //             listsongid: songIds
 //         };
-//         fetch(`http://localhost:9999/playlist/${pID}`, {
+//         fetch(`https://dsqkll-8090.csb.app/playlist/${pID}`, {
 //             method: "PUT",
 //             body: JSON.stringify(newPlayList),
 //             headers: {
@@ -253,7 +253,7 @@ const PlaylistUpdateForm = () => {
     }, []);
 
     useEffect(() => {
-        fetch(`http://localhost:9999/playlist/${pID}`)
+        fetch(`https://dsqkll-8090.csb.app/playlist/${pID}`)
             .then(res => res.json())
             .then(data => {
                 setPlaylistName(data.title);
@@ -266,7 +266,7 @@ const PlaylistUpdateForm = () => {
 
     useEffect(() => {
         if (listsongid.length > 0) {
-            fetch(`http://localhost:9999/listsongs`)
+            fetch(`https://dsqkll-8090.csb.app/listsongs`)
                 .then(res => res.json())
                 .then(data => {
                     const filteredSongs = data.filter(song => listsongid.includes(song.id));
@@ -278,7 +278,7 @@ const PlaylistUpdateForm = () => {
 
     useEffect(() => {
         if (songSearch.trim() !== '') {
-            fetch(`http://localhost:9999/listsongs`)
+            fetch(`https://dsqkll-8090.csb.app/listsongs`)
                 .then(res => res.json())
                 .then(data => {
                     const filteredSongs = data.filter(song =>
@@ -335,7 +335,7 @@ const PlaylistUpdateForm = () => {
             listsongid: songIds
         };
 
-        fetch(`http://localhost:9999/playlist/${pID}`, {
+        fetch(`https://dsqkll-8090.csb.app/playlist/${pID}`, {
             method: 'PUT',
             body: JSON.stringify(updatedPlaylist),
             headers: {

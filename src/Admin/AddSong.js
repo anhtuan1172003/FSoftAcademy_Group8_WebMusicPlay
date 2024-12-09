@@ -25,7 +25,7 @@ export default function AddSong() {
     const [audio, setAudio] = useState(""); 
 
     useEffect(() => {
-        fetch(`http://localhost:9999/listsongs`)
+        fetch(`https://dsqkll-8090.csb.app/listsongs`)
             .then(res => res.json())
             .then(data => {
                 setSong(data.id)
@@ -42,16 +42,16 @@ export default function AddSong() {
             .catch(e => console.log(e))
 
 
-        fetch("http://localhost:9999/categories")
+        fetch("https://dsqkll-8090.csb.app/categories")
             .then(res => res.json())
             .then(result => setCategories(result))
             .catch(error => console.log(error));
-        fetch("http://localhost:9999/artist")
+        fetch("https://dsqkll-8090.csb.app/artist")
             .then(res => res.json())
             .then(result => setArtist(result))
             .catch(error => console.log(error));
 
-        fetch("http://localhost:9999/albums")
+        fetch("https://dsqkll-8090.csb.app/albums")
             .then(res => res.json())
             .then(result => setAlbum(result))
 
@@ -91,7 +91,7 @@ export default function AddSong() {
                 categoryId: categoryId,
             };
 
-            fetch("http://localhost:9999/listsongs", {
+            fetch("https://dsqkll-8090.csb.app/listsongs", {
                 method: "POST",
                 body: JSON.stringify(newSong),
                 headers: {

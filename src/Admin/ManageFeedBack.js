@@ -12,7 +12,7 @@ export default function ManageFB() {
 
     useEffect(() => {
         // Fetch phản hồi
-        fetch('http://localhost:9999/feedback')
+        fetch('https://dsqkll-8090.csb.app/feedback')
             .then(response => response.json())
             .then(data => {
                 setFb(data);
@@ -21,13 +21,13 @@ export default function ManageFB() {
             .catch(error => console.error('Error fetching feedback:', error));
 
         // Fetch danh sách người dùng
-        fetch('http://localhost:9999/users')
+        fetch('https://dsqkll-8090.csb.app/users')
             .then(response => response.json())
             .then(data => setUsers(data))
             .catch(error => console.error('Error fetching users:', error));
 
         // Fetch danh sách bài hát
-        fetch('http://localhost:9999/listsongs')
+        fetch('https://dsqkll-8090.csb.app/listsongs')
             .then(response => response.json())
             .then(data => setSongs(data))
             .catch(error => console.error('Error fetching songs:', error));
@@ -52,7 +52,7 @@ export default function ManageFB() {
 
         if (isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:9999/feedback/${feedbackId}`, {
+                const response = await fetch(`https://dsqkll-8090.csb.app/feedback/${feedbackId}`, {
                     method: 'DELETE',
                 });
 

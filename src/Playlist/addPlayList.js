@@ -42,7 +42,7 @@ const PlaylistAddForm = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:9999/categories`)
+        fetch(`https://dsqkll-8090.csb.app/categories`)
             .then(res => res.json())
             .then(data => setCategory(data))
             .catch(e => console.log(e));
@@ -50,7 +50,7 @@ const PlaylistAddForm = () => {
 
     useEffect(() => {
         if (songSearch.trim() !== '') {
-            fetch(`http://localhost:9999/listsongs`)
+            fetch(`https://dsqkll-8090.csb.app/listsongs`)
                 .then(res => res.json())
                 .then(data => {
                     const filteredSongs = data.filter(p => p.title.toLowerCase().includes(songSearch.toLowerCase()));
@@ -72,7 +72,7 @@ const PlaylistAddForm = () => {
             description: description,
             listsongid: songIds
         };
-        fetch("http://localhost:9999/playlist", {
+        fetch("https://dsqkll-8090.csb.app/playlist", {
             method: "POST",
             body: JSON.stringify(newPlayList),
             headers: {
