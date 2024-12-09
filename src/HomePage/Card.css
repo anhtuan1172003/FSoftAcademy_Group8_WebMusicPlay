@@ -1,6 +1,7 @@
 .card {
-    width: 210px;
-    margin: 10px;
+    width: 150px;
+    height: 200px;
+    margin: 15px;
     transition: transform 0.3s ease-in-out;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
@@ -11,16 +12,19 @@
   }
   
   .card-img-top {
-    height: 210px;
+    height: auto;
     object-fit: cover;
+    margin-bottom: 5px;
+    border-radius: 5px;
   }
   
   .card-body {
-    padding: 15px;
+    padding: 5px;
   }
   
   .card-title {
     margin-bottom: 0;
+    font-size: 14px;
   }
   
   .card-title a {
@@ -36,6 +40,11 @@
   .card-title p {
     margin: 0;
     overflow: hidden;
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis; */
     white-space: nowrap;
+    width: 100%;
+    font-weight: lighter;
+    transition: transform 0.5s ease; 
+    display: inline-block;
+    position: relative;
   }

@@ -4,11 +4,11 @@ import ManageArtists from './ManageArtist';
   
 export default function Admin() {
     return (
-      <div>
+
         <Container>
         <Row>
             <ManageArtists/>
         </Row>
         </Container>
-           </div>
+
     );}

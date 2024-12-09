@@ -11,19 +11,19 @@ const SongDetailad = () => {
 
   useEffect(() => {
     // Fetch the song details
-    fetch(`https://yvkjyc-8080.csb.app/listsongs/${id}`)
+    fetch(`http://localhost:9999/listsongs/${id}`)
       .then(response => response.json())
       .then(data => setSong(data))
       .catch(error => console.error('Error fetching song details:', error));
 
     // Fetch artist details
-    fetch('https://yvkjyc-8080.csb.app/artist')
+    fetch('http://localhost:9999/artist')
       .then(response => response.json())
       .then(data => setArtist(data))
       .catch(error => console.error('Error fetching artists:', error));
 
     // Fetch category details
-    fetch('https://yvkjyc-8080.csb.app/categories')
+    fetch('http://localhost:9999/categories')
       .then(response => response.json())
       .then(data => setCategories(data))
       .catch(error => console.error('Error fetching categories:', error));
@@ -46,7 +46,7 @@ const SongDetailad = () => {
 
   const handleToggleAccept = () => {
     const newAcceptStatus = song.accept === 'yes' ? 'no' : 'yes';
-    fetch(`https://yvkjyc-8080.csb.app/listsongs/${id}`, {
+    fetch(`http://localhost:9999/listsongs/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

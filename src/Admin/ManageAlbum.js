@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Button, Row, Col, Modal, Form } from 'react-bootstrap';
+import { Table, Button, Row, Col, Modal, Form, Container, FormControl, FormGroup } from 'react-bootstrap';
 import HeaderAdmin from './Header';
+import { v4 } from "uuid";
+import { imgDB } from "../Firebase/Config";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const ManageAlbums = () => {
   const [albums, setAlbums] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [currentAlbum, setCurrentAlbum] = useState({ id: '', title: '', cover: '', cateId: '' });
+  const [currentAlbum, setCurrentAlbum] = useState({ id: '', title: '', cover: ''});
+  const [img, setImg] = useState("");
+  const [isUploadingImg, setIsUploadingImg] = useState(false);
+  const [cover, setCover] =useState([])
 
   useEffect(() => {
-    fetch('https://yvkjyc-8080.csb.app/albums')
+    fetch('http://localhost:9999/albums')
       .then(response => response.json())
-      .then(data => setAlbums(data))
+      .then(data => 
+        setAlbums(data)
+    )
       .catch(error => console.error('Error fetching albums:', error));
   }, []);
 
-  const handleShowModal = (album = { id: '', title: '', cover: '', cateId: '' }) => {
+  const handleShowModal = (album = { id: '', title: '', cover: ''}) => {
     setCurrentAlbum(album);
     setShowModal(true);
   };
@@ -34,7 +42,7 @@ const ManageAlbums = () => {
 
     const updatedAlbum = { ...currentAlbum, id: newId.toString() };
     const method = currentAlbum.id ? 'PUT' : 'POST';
-    const url = currentAlbum.id ? `https://yvkjyc-8080.csb.app/albums/${currentAlbum.id}` : 'https://yvkjyc-8080.csb.app/albums';
+    const url = currentAlbum.id ? `http://localhost:9999/albums/${currentAlbum.id}` : 'http://localhost:9999/albums';
 
     fetch(url, {
       method: method,
@@ -46,7 +54,7 @@ const ManageAlbums = () => {
         if (method === 'POST') {
           setAlbums([...albums, data]);
         } else {
-          setAlbums(albums.map(album => (album.id === data.id ? data : album)));
+          setAlbums(albums.map(album => (album.id == data.id ? data : album)));
         }
         handleCloseModal();
       })
@@ -55,7 +63,7 @@ const ManageAlbums = () => {
 
   const handleDelete = (id) => {
     if (window.confirm('Do you want to delete this album?')) {
-      fetch(`https://yvkjyc-8080.csb.app/albums/${id}`, { method: 'DELETE' })
+      fetch(`http://localhost:9999/albums/${id}`, { method: 'DELETE' })
         .then(() => {
           alert('DELETE success');
           setAlbums(albums.filter(album => album.id !== id));
@@ -68,9 +76,28 @@ const ManageAlbums = () => {
     album.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const imgRef = ref(imgDB, `albumimages/${file.name}_${v4()}`);
+      setIsUploadingImg(true);
+      try {
+        const snapshot = await uploadBytes(imgRef, file);
+        const url = await getDownloadURL(snapshot.ref);
+        setCurrentAlbum((prevAlbum) => ({
+          ...prevAlbum,
+          cover: url,
+        }));
+        setIsUploadingImg(false);
+      } catch (error) {
+        console.error("Error uploading image: ", error);
+        setIsUploadingImg(false);
+      }
+    }
+  };
   return (
-    <div>
-      <Row><HeaderAdmin/></Row>
+    <Container>
+      <Row><HeaderAdmin /></Row>
       <Row>
         <Col md={8}>
           <h1>Manage Albums</h1>
@@ -102,7 +129,7 @@ const ManageAlbums = () => {
             <tr key={index}>
               <td>{album.id}</td>
               <td>{album.title}</td>
-              <td><img src={album.cover} alt={album.title} style={{ width: '50px' }} /></td>
+              <td><img src={album.cover} alt={album.title} style={{ width: '100px' }} /></td>
               <td>
                 <Button variant="warning" className="me-2" onClick={() => handleShowModal(album)}>Edit</Button>
                 <Button variant="danger" onClick={() => handleDelete(album.id)}>Delete</Button>
@@ -130,23 +157,27 @@ const ManageAlbums = () => {
 
             <Form.Group controlId="formAlbumCover">
               <Form.Label>Cover</Form.Label>
-              <Form.Control
+              {/* <Form.Control
                 type="text"
                 placeholder="Enter album cover URL"
                 value={currentAlbum.cover}
                 onChange={(e) => setCurrentAlbum({ ...currentAlbum, cover: e.target.value })}
-              />
+              /> */}
+       
+                <FormControl type="file" onChange={handleImageUpload} />
+                {currentAlbum.cover && <img src={currentAlbum.cover} alt="Preview" style={{ marginTop: "10px", maxWidth: "200px" }} />}
+       
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
-          <Button variant="primary" onClick={handleSaveAlbum}>
-            {currentAlbum.id ? 'Save Changes' : 'Add Album'}
+          <Button variant="primary" onClick={handleSaveAlbum} disabled={isUploadingImg}>
+            {isUploadingImg ? "Uploading files..." : currentAlbum.id ? "Save Changes" : "Add Album"}
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </Container>
   );
 }
 

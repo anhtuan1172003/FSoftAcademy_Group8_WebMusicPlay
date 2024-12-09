@@ -8,7 +8,7 @@ const PlaylistComponent = () => {
   const [playlist, setPlaylist] = useState([]);
   
   useEffect(() => {
-    fetch(`https://yvkjyc-8080.csb.app/playlist/`)
+    fetch(`http://localhost:9999/playlist/`)
       .then(res => res.json())
       .then(data => setPlaylist(data))
       .catch(e => console.log(e));
@@ -22,7 +22,7 @@ const PlaylistComponent = () => {
         <Row>
           {playlist.map((playlistItem, index) => (
             <Col key={index} md={4} lg={3} sm={6} xs={12}>
-              <Card className="playlist-card">
+              <Card className="album-card">
                 <a href={`/playListDetail/${playlistItem.id}`}>
                   <Card.Img
                     className="playlist-card-img"

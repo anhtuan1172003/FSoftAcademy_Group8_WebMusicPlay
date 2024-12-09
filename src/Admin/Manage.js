@@ -12,12 +12,12 @@ const ManageTable = () => {
 
   useEffect(() => {
     // Fetch categories from the backend
-    fetch("https://yvkjyc-8080.csb.app/artist")
+    fetch("http://localhost:9999/artist")
       .then(res => res.json())
       .then(result => setArtist(result))
       .catch(error => console.log(error));
-      
-    fetch("https://yvkjyc-8080.csb.app/categories")
+
+    fetch("http://localhost:9999/categories")
       .then(res => res.json())
       .then(result => {
         setCategories(result);
@@ -25,7 +25,7 @@ const ManageTable = () => {
       .catch(error => console.log(error));
 
     // Fetch songs from the backend
-    fetch('https://yvkjyc-8080.csb.app/listsongs')
+    fetch('http://localhost:9999/listsongs')
       .then(response => response.json())
       .then(data => {
         let filteredSongs = data;
@@ -35,8 +35,8 @@ const ManageTable = () => {
           );
         }
 
-        if (selectedCategory) {
-          filteredSongs = filteredSongs.filter(p => p.categoryId === parseInt(selectedCategory));
+        if (selectedCategory && selectedCategory !== 'all') {
+          filteredSongs = filteredSongs.filter(p => p.categoryId == parseInt(selectedCategory));
         }
         setSongs(filteredSongs);
       })
@@ -49,7 +49,7 @@ const ManageTable = () => {
 
   const handleDelete = (songId) => {
     if (window.confirm("Do you want to delete?")) {
-      fetch("https://yvkjyc-8080.csb.app/listsongs/" + songId, { method: "DELETE" })
+      fetch("http://localhost:9999/listsongs/" + songId, { method: "DELETE" })
         .then(() => {
           alert("Delete success!");
           window.location.reload();
@@ -64,7 +64,7 @@ const ManageTable = () => {
 
   const handleTogglePremium = async (songId, currentPremiumStatus) => {
     try {
-      const response = await fetch(`https://yvkjyc-8080.csb.app/listsongs/${songId}`, {
+      const response = await fetch(`http://localhost:9999/listsongs/${songId}`, {
         method: "PATCH",
         headers: {
           'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ const ManageTable = () => {
       });
 
       if (response.ok) {
-        setSongs(songs.map(song => 
+        setSongs(songs.map(song =>
           song.id === songId ? { ...song, premium: !currentPremiumStatus } : song
         ));
         alert(`Song is now ${!currentPremiumStatus ? 'premium' : 'non-premium'}`);
@@ -90,7 +90,7 @@ const ManageTable = () => {
     <Container>
       <HeaderAdmin />
       <Row>
-        <Col md={8}>
+        <Col md={8} lg={8}>
           <h1>Manage</h1>
         </Col>
         <Col md={3}>
@@ -115,12 +115,17 @@ const ManageTable = () => {
       </Row>
       <hr />
       <Row>
-        <Col md={2}>
+        <Col md={2} lg={2}>
           <h4>Categories</h4>
+          <input
+            type="radio"
+            name="category"
+            value="all"
+            onChange={handleCategoryChange}
+          /> ALL
           {categories.map(category => (
             <Row key={category.id}>
               <label>
-                {category.name}
                 <input
                   type="radio"
                   id={category.id}
@@ -128,11 +133,12 @@ const ManageTable = () => {
                   value={category.id}
                   onChange={handleCategoryChange}
                 />
+                {category.name}
               </label>
             </Row>
           ))}
         </Col>
-        <Col md={10}>
+        <Col md={10} lg={10}>
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -161,10 +167,10 @@ const ManageTable = () => {
                       style={{ width: '50px', height: '50px' }}
                     />
                   </td>
-                  <td>{song.src}</td>
+                  <td className="text-truncate" style={{ maxWidth: "400px" }}><a href={song.src} target="_blank" >{song.src}</a></td>
                   <td>{artist?.find(c => c.id === song.artistID)?.name}</td>
                   <td>{song.plays}</td>
-                  <td>{categories?.find(c => c.id === song.categoryId)?.name}</td>
+                  <td>{categories?.find(c => c.id == song.categoryId)?.name}</td>
                   <td>
                     <Button
                       variant={song.premium ? "success" : "secondary"}

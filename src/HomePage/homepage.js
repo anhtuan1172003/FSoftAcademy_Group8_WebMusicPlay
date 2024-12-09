@@ -1,4 +1,4 @@
-import { Container, Col, Row} from 'react-bootstrap'
+import { Container, Col, Row } from 'react-bootstrap'
 import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import Main from './Main';
@@ -24,24 +24,25 @@ export default function HomePage() {
         <Row>
           <Header />
         </Row>
-        <Row>
-          <Carousel1></Carousel1>
-        </Row>
-        <Container style={{ marginTop: "50px" }}>
-          <Row>
-            <Col md={9}>
-              <Main />
-
-            </Col>
-            <Col md={3}>
-              <BXH></BXH>
-            </Col>
-          </Row>
-        </Container>
       </Container>
       <Row>
-          <Footer></Footer>
+        <Carousel1></Carousel1>
+      </Row>
+      <Container style={{ marginTop: "50px" }}>
+        <Row>
+          <Col md={9}>
+            <Main />
+
+          </Col>
+          <Col md={3}>
+            <BXH></BXH>
+          </Col>
         </Row>
+      </Container>
+
+      <Row>
+        <Footer></Footer>
+      </Row>
     </div>
   );
 }

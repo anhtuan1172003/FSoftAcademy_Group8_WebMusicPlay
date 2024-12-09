@@ -27,15 +27,15 @@ const Ranking = () => {
   const fetchData = useCallback(async () => {
     try {
       const [artistsRes, songsRes, likesRes] = await Promise.all([
-        fetch('https://yvkjyc-8080.csb.app/artist').then(res => res.json()),
-        fetch('https://yvkjyc-8080.csb.app/listsongs').then(res => res.json()),
-        user ? fetch(`https://yvkjyc-8080.csb.app/like?userid=${user.id}`).then(res => res.json()) : Promise.resolve([])
+        fetch('http://localhost:9999/artist').then(res => res.json()),
+        fetch('http://localhost:9999/listsongs').then(res => res.json()),
+        user ? fetch(`http://localhost:9999/like?userid=${user.id}`).then(res => res.json()) : Promise.resolve([])
       ]);
 
       setArtists(artistsRes);
       
-      const acceptedSongs = songsRes.filter(song => song.accept === 'yes');
-      const topSongs = acceptedSongs.sort((a, b) => b.plays - a.plays).slice(0, 10);
+      // const acceptedSongs = songsRes.filter(song => song.accept === 'yes');
+      const topSongs = songsRes.sort((a, b) => b.plays - a.plays).slice(0, 10);
       
       const songsWithLikes = topSongs.map(song => ({
         ...song,
@@ -69,11 +69,11 @@ const Ranking = () => {
 
     try {
       if (song.isLiked) {
-        await fetch(`https://yvkjyc-8080.csb.app/like/${song.likeId}`, { method: 'DELETE' });
+        await fetch(`http://localhost:9999/like/${song.likeId}`, { method: 'DELETE' });
         song.isLiked = false;
         song.likeId = null;
       } else {
-        const response = await fetch('https://yvkjyc-8080.csb.app/like', {
+        const response = await fetch('http://localhost:9999/like', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userid: user.id, trackid: song.id }),
@@ -108,7 +108,7 @@ const Ranking = () => {
                   <h2>{index + 1}</h2>
                 </Col>
                 <Col xs={2}>
-                  <Image src={song.imgSrc} thumbnail alt={song.title} />
+                  <Image src={song.imgSrc} thumbnail alt={song.title}  style={{width: "100%"}}/>
                 </Col>
                 <Col xs={7}>
                   <h2>{song.title}</h2>

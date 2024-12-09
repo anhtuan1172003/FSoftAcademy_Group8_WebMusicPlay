@@ -15,14 +15,14 @@ export default function Profile() {
   const [artists, setArtists] = useState([]);
 
   const fetchArtists = useCallback(() => {
-    fetch(`https://yvkjyc-8080.csb.app/artist`)
+    fetch(`http://localhost:9999/artist`)
       .then(res => res.json())
       .then(data => setArtists(data))
       .catch(e => console.log(e));
   }, []);
 
   const fetchPlaylists = useCallback(() => {
-    fetch(`https://yvkjyc-8080.csb.app/playlist`)
+    fetch(`http://localhost:9999/playlist`)
       .then(res => res.json())
       .then(data => {
         const data1 = data.filter(p => p.userid === uID);
@@ -32,7 +32,7 @@ export default function Profile() {
   }, [uID]);
 
   const fetchLikedSongs = useCallback(() => {
-    fetch(`https://yvkjyc-8080.csb.app/like`)
+    fetch(`http://localhost:9999/like`)
       .then(res => res.json())
       .then(data => {
         const likedData = data.filter(l => l.userid === uID);
@@ -42,7 +42,7 @@ export default function Profile() {
   }, [uID]);
 
   const fetchSongDetails = useCallback(() => {
-    fetch(`https://yvkjyc-8080.csb.app/listsongs`)
+    fetch(`http://localhost:9999/listsongs`)
       .then(res => res.json())
       .then(data => {
         const filteredSongs = data.filter(song => likedSongs.some(ls => ls.trackid == song.id));
@@ -62,7 +62,7 @@ export default function Profile() {
   }, [fetchSongDetails]);
 
   const handleDeletePlaylist = (id) => {
-    fetch(`https://yvkjyc-8080.csb.app/playlist/${id}`, {
+    fetch(`http://localhost:9999/playlist/${id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
@@ -73,7 +73,7 @@ export default function Profile() {
   };
 
   const handleDeleteLikeSong = (likeId) => {
-    fetch(`https://yvkjyc-8080.csb.app/like/${likeId}`, {
+    fetch(`http://localhost:9999/like/${likeId}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
@@ -93,19 +93,21 @@ export default function Profile() {
   }, [artists]);
 
   useEffect(() => {
-    fetch(`https://yvkjyc-8080.csb.app/users/${uID}`)
+    fetch(`http://localhost:9999/users/${uID}`)
       .then(res => res.json())
       .then(data => setUser(data))
       .catch(e => console.log(e));
   }, [uID]);
 
   return (
-    <Container fluid>
+    <div>
+    <Container>
       <Row>
-        <Header/>
+        <Header />
       </Row>
+      </Container>
       <Row className="justify-content-center text-center py-5" style={{ backgroundImage: `url(/images/anhnencanhan.jpg)`, backgroundSize: 'cover', color: 'white' }}>
-        <Col md={2}>
+        <Col md={2} style={{paddingLeft: "50px"}}>
           <Image src={"/images/avataruser.png"} roundedCircle style={{ width: '150px', height: '150px' }} />
           <h3>{user.fullName}</h3>
           <p>ID: {user.id}</p>
@@ -125,27 +127,29 @@ export default function Profile() {
 
         <Row className="mt-4">
           {activeTab === 'playlist' && (
+            <Row>
             <Col md={8} className="mb-3">
               <Link to={`/addPlaylist`}>
                 <Button variant="primary">Add Playlist</Button>
               </Link>
             </Col>
+            </Row>
           )}
           {activeTab === 'playlist' && playlist.map((pl, idx) => (
-            <Col md={8} key={idx}>
-              <CardGroup>
-                <Card>
-                  <Card.Img variant="top" src={pl.img} style={{ width: "100%" }} />
+            <Row>
+            <Col key={idx} md={4} className="mb-4 d-flex justify-content-center">
+                <Card style={{width: "18rem", height: "22rem"}}>
+                  <Card.Img variant="top" src={pl.img} style={{ objectFit: "cover", height: "auto" }} />
                   <Card.Body>
-                   <Link to={`/playListDetail/${pl.id}`}><Card.Title>{pl.title}</Card.Title></Link> 
+                    <Link to={`/playListDetail/${pl.id}`}><Card.Title>{pl.title}</Card.Title></Link>
                     <Button variant="warning" onClick={() => handleEditPlaylist(pl.id)} style={{ marginRight: "10px" }}>Chỉnh sửa</Button>
                     <Button variant="danger" onClick={() => handleDeletePlaylist(pl.id)}>Xóa</Button>
                   </Card.Body>
                 </Card>
-              </CardGroup>
             </Col>
+            </Row>
           ))}
-          {activeTab === 'liked' && likedSongs1.map((song, idx) => {
+          {activeTab == 'liked' && likedSongs1.map((song, idx) => {
             const likeInfo = likedSongs.find(ls => ls.trackid == song.id);
             return (
               <Col md={8} key={idx}>
@@ -165,11 +169,8 @@ export default function Profile() {
               </Col>
             );
           })}
-          <Col md={4}>
-            {/* Phần này có thể được sử dụng cho các tính năng khác trong tương lai */}
-          </Col>
         </Row>
       </Container>
-    </Container>
+    </div>
   );
 }

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, FormControl, FormGroup, FormLabel, FormSelect, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { v4 } from "uuid";
+import { imgDB } from "../Firebase/Config";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function EditSong() {
     const { eId } = useParams();
@@ -11,21 +14,27 @@ export default function EditSong() {
     const [title, setTitle] = useState("");
     const [img, setImg] = useState("");
     const [src, setSrc] = useState("");
-    const [artist, setArtist] = useState();
+    const [artist, setArtist] = useState([]);
     const [plays, setPlay] = useState(0);
     const [categoryId, setCatId] = useState('');
     const [ranking, setRank] = useState(0);
     const [albumId, setAlbumId] = useState('');
+    const [audio, setAudio] = useState("");
+    const [isUploadingImg, setIsUploadingImg] = useState(false);
+    const [isUploadingAudio, setIsUploadingAudio] = useState(false);
+    const [artistId, setArtistId] = useState();
+    const [lyrics, setLyrics] = useState("")
 
     useEffect(() => {
-        fetch(`https://yvkjyc-8080.csb.app/listsongs/${eId}`)
+        fetch(`http://localhost:9999/listsongs/${eId}`)
             .then(res => res.json())
             .then(data => {
                 setSongs(data)
                 setTitle(data.title)
                 setImg(data.imgSrc)
-                setSrc(data.src)
-                setArtist(data.artist)
+                setAudio(data.src)
+                setLyrics(data.lyrics)
+                setArtistId(data.artistID)
                 setPlay(data.plays)
                 setCatId(data.categoryId)
                 setRank(data.ranking)
@@ -33,14 +42,18 @@ export default function EditSong() {
             })
             .catch(e => console.log(e))
 
-        fetch("https://yvkjyc-8080.csb.app/categories")
+        fetch("http://localhost:9999/categories")
             .then(res => res.json())
             .then(result => setCategories(result))
             .catch(error => console.log(error));
 
-        fetch("https://yvkjyc-8080.csb.app/albums")
+        fetch("http://localhost:9999/albums")
             .then(res => res.json())
-            .then(result => setAlbum(result))
+            .then(result => setAlbum(result));
+        fetch("http://localhost:9999/artist")
+            .then(res => res.json())
+            .then(result => setArtist(result))
+            .catch(error => console.log(error));
     }, [eId])
 
     function handleCreate(e) {
@@ -60,15 +73,16 @@ export default function EditSong() {
             const editSong = {
                 title: title,
                 imgSrc: img,
-                src: src,
-                artist: artist,
+                src: audio,
+                artistID: artistId,
                 plays: plays,
                 ranking: ranking,
                 AlbumID: albumId,
+                lyrics: lyrics.trim(),
                 categoryId: categoryId,
             };
 
-            fetch(`https://yvkjyc-8080.csb.app/listsongs/${eId}`, {
+            fetch(`http://localhost:9999/listsongs/${eId}`, {
                 method: "PUT",
                 body: JSON.stringify(editSong),
                 headers: {
@@ -83,14 +97,36 @@ export default function EditSong() {
                 .catch(err => console.log(err));
         }
     }
-    const handleImageUpload = (e) => {
+    const handleImageUpload = async (e) => {
         const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setImg(reader.result);
-        };
         if (file) {
-            reader.readAsDataURL(file);
+            const imgRef = ref(imgDB, `musicimages/${file.name}_${v4()}`);
+            setIsUploadingImg(true);
+            try {
+                const snapshot = await uploadBytes(imgRef, file);
+                const url = await getDownloadURL(snapshot.ref);
+                setImg(url);
+                setIsUploadingImg(false);
+            } catch (error) {
+                console.error("Error uploading image: ", error);
+                setIsUploadingImg(false);
+            }
+        }
+    };
+    const handleAudioUpload = async (e) => {
+        let file = e.target.files[0];
+        if (file) {
+            const audioRef = ref(imgDB, `musicaudio/${file.name}_${v4()}`);
+            setIsUploadingAudio(true);
+            try {
+                const snapshot = await uploadBytes(audioRef, file);
+                const url = await getDownloadURL(snapshot.ref);
+                setAudio(url);
+                setIsUploadingAudio(false);
+            } catch (error) {
+                console.error("Error uploading audio: ", error);
+                setIsUploadingAudio(false);
+            }
         }
     };
 
@@ -120,15 +156,34 @@ export default function EditSong() {
                     <FormGroup>
                         <FormLabel>Image</FormLabel>
                         <FormControl type="file" onChange={handleImageUpload} />
-                        {img && <img src={img} alt="Preview" style={{ marginTop: "10px", maxWidth: "100%" }} />}
+                        {img && <img src={img} alt="Preview" style={{ marginTop: "10px", maxWidth: "200px" }} />}
                     </FormGroup>
                     <FormGroup>
-                        <FormLabel>Src Music</FormLabel>
-                        <FormControl value={src} onChange={e => setSrc(e.target.value)} />
+                        <FormLabel>Audio File</FormLabel>
+                        <FormControl type="file" onChange={handleAudioUpload} />
+                        {audio && (
+                            <div style={{ marginTop: "10px" }}>
+                                <p>Current audio:</p>
+                                <audio controls style={{ width: "100%" }}>
+                                    <source src={audio} type="audio/mpeg" />
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                        )}
+                    </FormGroup>
+                    <FormGroup>
+                        <FormLabel>Lyrics</FormLabel>
+                        <FormControl as="textarea" onChange={e => setLyrics(e.target.value)} style={{ height: "400px" }} value={song.lyrics} />
                     </FormGroup>
                     <FormGroup>
                         <FormLabel>Artist</FormLabel>
-                        <FormControl value={artist} onChange={e => setArtist(e.target.value)}></FormControl>
+                        <FormSelect onChange={e => setArtistId(e.target.value)} value={song.artistID}>
+                            <option value="0">-- Select a artist --</option>
+                            {artist?.map(c => (
+                                <option value={c.id} key={c.id}>{c.name}</option>
+                            ))
+                            }
+                        </FormSelect>
                     </FormGroup>
                     <FormGroup>
                         <FormLabel>Play</FormLabel>

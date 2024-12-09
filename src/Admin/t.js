@@ -17,7 +17,7 @@ export default function EditSong() {
     const [albumId, setAlbumId] = useState("");
 
     useEffect(() => {
-        fetch(`https://yvkjyc-8080.csb.app/listsongs/${eId}`)
+        fetch(`http://localhost:9999/listsongs/${eId}`)
             .then(res => res.json())
             .then(data => {
                 setSong(data);
@@ -32,12 +32,12 @@ export default function EditSong() {
             })
             .catch(e => console.log(e));
 
-        fetch("https://yvkjyc-8080.csb.app/categories")
+        fetch("http://localhost:9999/categories")
             .then(res => res.json())
             .then(result => setCategories(result))
             .catch(error => console.log(error));
 
-        fetch("https://yvkjyc-8080.csb.app/albums")
+        fetch("http://localhost:9999/albums")
             .then(res => res.json())
             .then(result => setAlbums(result))
             .catch(error => console.log(error));
@@ -69,7 +69,7 @@ export default function EditSong() {
                 categoryId: categoryId,
             };
 
-            fetch(`https://yvkjyc-8080.csb.app/listsongs/${eId}`, {
+            fetch(`http://localhost:9999/listsongs/${eId}`, {
                 method: "PUT",
                 body: JSON.stringify(updatedSong),
                 headers: {

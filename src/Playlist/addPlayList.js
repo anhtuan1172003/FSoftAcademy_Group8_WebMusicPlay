@@ -3,6 +3,9 @@ import { Form, Button, Col, Row, ListGroup, InputGroup, FormControl, Container }
 import { useParams } from "react-router-dom";
 import './PlaylistUpdateForm.css';
 import Header from '../Header/Header';
+import { v4 } from "uuid";
+import { imgDB } from "../Firebase/Config";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const PlaylistAddForm = () => {
     const [playlistName, setPlaylistName] = useState('');
@@ -13,6 +16,8 @@ const PlaylistAddForm = () => {
     const [songs, setSongs] = useState([]);
     const [songSearch, setSongSearch] = useState('');
     const [searchResult, setSearchResult] = useState([]);
+    const [isUploadingImg, setIsUploadingImg] = useState(false);
+    
 
     const [user, setUser] = useState(null);
 
@@ -37,7 +42,7 @@ const PlaylistAddForm = () => {
     };
 
     useEffect(() => {
-        fetch(`https://yvkjyc-8080.csb.app/categories`)
+        fetch(`http://localhost:9999/categories`)
             .then(res => res.json())
             .then(data => setCategory(data))
             .catch(e => console.log(e));
@@ -45,7 +50,7 @@ const PlaylistAddForm = () => {
 
     useEffect(() => {
         if (songSearch.trim() !== '') {
-            fetch(`https://yvkjyc-8080.csb.app/listsongs`)
+            fetch(`http://localhost:9999/listsongs`)
                 .then(res => res.json())
                 .then(data => {
                     const filteredSongs = data.filter(p => p.title.toLowerCase().includes(songSearch.toLowerCase()));
@@ -65,9 +70,9 @@ const PlaylistAddForm = () => {
             userid: user.id,
             img: image,
             description: description,
-            trackid: songIds
+            listsongid: songIds
         };
-        fetch("https://yvkjyc-8080.csb.app/playlist", {
+        fetch("http://localhost:9999/playlist", {
             method: "POST",
             body: JSON.stringify(newPlayList),
             headers: {
@@ -94,6 +99,22 @@ const PlaylistAddForm = () => {
             setSongSearch('');
         }
     };
+    const handleImageUpload = async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const imgRef = ref(imgDB, `playlistimages/${file.name}_${v4()}`);
+            setIsUploadingImg(true);
+            try {
+                const snapshot = await uploadBytes(imgRef, file);
+                const url = await getDownloadURL(snapshot.ref);
+                setImage(url);
+                setIsUploadingImg(false);
+            } catch (error) {
+                console.error("Error uploading image: ", error);
+                setIsUploadingImg(false);
+            }
+        }
+    };
 
     return (
         <Container>
@@ -118,13 +139,10 @@ const PlaylistAddForm = () => {
                     </Form.Group>
 
                     <Form.Group as={Row} controlId="formImage">
-                        <Form.Label column sm={2} className="form-label">Hình ảnh playlist</Form.Label>
+                        <Form.Label column sm={2} className="form-label">Cover playlist</Form.Label>
                         <Col sm={10}>
-                            <Form.Control
-                                type="text"
-                                onChange={(e) => setImage(e.target.value)}
-                                className="form-control"
-                            />
+                            <FormControl type="file" onChange={handleImageUpload} />
+                            {image && <img src={image} alt="Preview" style={{ marginTop: "10px", maxWidth: "200px" }} />}
                             <Form.Text className="form-text">
                                 (Hình tối thiểu 500 x 500 pixels)
                             </Form.Text>

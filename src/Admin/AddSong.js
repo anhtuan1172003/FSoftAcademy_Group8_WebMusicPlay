@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, FormControl, FormGroup, FormLabel, FormSelect, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { imgDB } from "../Firebase/Config"; // Sử dụng imgDB thay vì uploadDB
+import { v4 } from "uuid";
+
 
 export default function AddSong() {
     const [song, setSong] = useState({});
@@ -16,9 +20,12 @@ export default function AddSong() {
     const [album, setAlbum] = useState([]);
     const [lyrics, setLyrics] = useState([]);
     const [artist, setArtist] = useState([]);
+    const [isUploadingImg, setIsUploadingImg] = useState(false);
+    const [isUploadingAudio, setIsUploadingAudio] = useState(false);
+    const [audio, setAudio] = useState(""); 
 
     useEffect(() => {
-        fetch(`https://yvkjyc-8080.csb.app/listsongs`)
+        fetch(`http://localhost:9999/listsongs`)
             .then(res => res.json())
             .then(data => {
                 setSong(data.id)
@@ -35,16 +42,16 @@ export default function AddSong() {
             .catch(e => console.log(e))
 
 
-        fetch("https://yvkjyc-8080.csb.app/categories")
+        fetch("http://localhost:9999/categories")
             .then(res => res.json())
             .then(result => setCategories(result))
             .catch(error => console.log(error));
-        fetch("https://yvkjyc-8080.csb.app/artist")
+        fetch("http://localhost:9999/artist")
             .then(res => res.json())
             .then(result => setArtist(result))
             .catch(error => console.log(error));
 
-        fetch("https://yvkjyc-8080.csb.app/albums")
+        fetch("http://localhost:9999/albums")
             .then(res => res.json())
             .then(result => setAlbum(result))
 
@@ -54,6 +61,7 @@ export default function AddSong() {
         e.preventDefault();
         let message = "";
         let status = true;
+
         if (title.length === 0) {
             message += "Product name is required\n";
             status = false;
@@ -61,23 +69,29 @@ export default function AddSong() {
         if (categoryId === 0) {
             message += "You must choose a category!";
             status = false;
-        } if (status === false || message.length > 0) {
+        }
+        // Kiểm tra artistId
+        if (!artistId) {
+            message += "You must choose an artist!\n";
+            status = false;
+        }
+
+        if (status === false || message.length > 0) {
             alert(message);
         } else {
             const newSong = {
                 title: title,
                 imgSrc: img,
-                src: src,
+                src: audio,
                 artistID: artistId,
                 plays: plays,
                 ranking: ranking,
                 AlbumID: albumId,
-                lyrics: lyrics,
+                lyrics: lyrics.trim(),
                 categoryId: categoryId,
-
             };
 
-            fetch("https://yvkjyc-8080.csb.app/listsongs", {
+            fetch("http://localhost:9999/listsongs", {
                 method: "POST",
                 body: JSON.stringify(newSong),
                 headers: {
@@ -92,6 +106,40 @@ export default function AddSong() {
                 .catch(err => console.log(err));
         }
     }
+
+    const handleImageUpload = async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const imgRef = ref(imgDB, `musicimages/${file.name}_${v4()}`);
+            setIsUploadingImg(true);
+            try {
+                const snapshot = await uploadBytes(imgRef, file);
+                const url = await getDownloadURL(snapshot.ref);
+                setImg(url);
+                setIsUploadingImg(false);
+            } catch (error) {
+                console.error("Error uploading image: ", error);
+                setIsUploadingImg(false);
+            }
+        }
+    };
+
+    const handleAudioUpload = async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const audioRef = ref(imgDB, `musicaudio/${file.name}_${v4()}`);
+            setIsUploadingAudio(true);
+            try {
+                const snapshot = await uploadBytes(audioRef, file);
+                const url = await getDownloadURL(snapshot.ref);
+                setAudio(url);
+                setIsUploadingAudio(false);
+            } catch (error) {
+                console.error("Error uploading audio: ", error);
+                setIsUploadingAudio(false);
+            }
+        }
+    };
     return (
         <Container>
             <Row>
@@ -117,24 +165,31 @@ export default function AddSong() {
                     </FormGroup>
                     <FormGroup>
                         <FormLabel>Image</FormLabel>
-                        <FormControl onChange={e => setImg(e.target.value)} />
+                        <FormControl required type="file" onChange={handleImageUpload} />
                     </FormGroup>
                     <FormGroup>
-                        <FormLabel>Src Music</FormLabel>
-                        <FormControl  onChange={e => setSrc(e.target.value)} />
+                        <FormLabel>Audio File</FormLabel>
+                        <FormControl required type="file" onChange={handleAudioUpload} />
                     </FormGroup>
                     <FormGroup>
                         <FormLabel>Lyrics</FormLabel>
-                        <FormControl onChange={e => setLyrics(e.target.value)} />
+                        <FormControl as="textarea" onChange={e => setLyrics(e.target.value)}  style={{height: "400px"}}/>
                     </FormGroup>
                     <FormGroup>
                         <FormLabel>Artist</FormLabel>
-                        <FormSelect onChange={e => setArtistId(parseInt(e.target.value))}>
+                        <FormSelect
+                            onChange={e => {
+                                const selectedValue = e.target.value;
+                                console.log("Selected artist ID:", selectedValue);
+
+                                // Giữ nguyên giá trị string, chỉ loại bỏ giá trị mặc định "0"
+                                setArtistId(selectedValue !== '0' ? selectedValue : null);
+                            }}
+                        >
                             <option value="0">-- Select a artist --</option>
                             {artist?.map(c => (
                                 <option value={c.id} key={c.id}>{c.name}</option>
-                            ))
-                            }
+                            ))}
                         </FormSelect>
                     </FormGroup>
                     <FormGroup>
@@ -166,7 +221,9 @@ export default function AddSong() {
                         </FormSelect>
                     </FormGroup>
                     <Form.Group className="mb-3">
-                        <Button onClick={handleCreate}>Create</Button>
+                        <Button onClick={handleCreate} disabled={isUploadingImg || isUploadingAudio}>
+                            {isUploadingImg || isUploadingAudio ? "Uploading files..." : "Create Song"}
+                        </Button>
                     </Form.Group>
                 </Col>
             </Row>

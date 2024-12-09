@@ -12,7 +12,7 @@ export default function Search() {
     console.log(search);
 
     useEffect(() => {
-        fetch("https://yvkjyc-8080.csb.app/listsongs")
+        fetch("http://localhost:9999/listsongs")
             .then(res => res.json())
             .then(data => setSongLists(data))
             .catch(error => console.log(error));

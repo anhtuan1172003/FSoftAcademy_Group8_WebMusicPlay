@@ -19,6 +19,16 @@ export default function SongList() {
     const [isLiked, setIsLiked] = useState(false);
     const [likeId, setLikeId] = useState(null);
     const [user, setUser] = useState(null);
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {    
+        fetch("http://localhost:9999/categories")
+          .then(res => res.json())
+          .then(result => {
+            setCategories(result);
+          })
+          .catch(error => console.log(error));
+      }, []);
 
     useEffect(() => {
         handleSessionStorage();
@@ -39,17 +49,17 @@ export default function SongList() {
     const fetchData = useCallback(async () => {
         try {
             const [artistsRes, albumsRes, songsRes, likesRes] = await Promise.all([
-                fetch('https://yvkjyc-8080.csb.app/artist').then(res => res.json()),
-                fetch('https://yvkjyc-8080.csb.app/albums').then(res => res.json()),
-                fetch('https://yvkjyc-8080.csb.app/listsongs').then(res => res.json()),
-                user ? fetch(`https://yvkjyc-8080.csb.app/like?userid=${user.id}&trackid=${aID}`).then(res => res.json()) : Promise.resolve([])
+                fetch('http://localhost:9999/artist').then(res => res.json()),
+                fetch('http://localhost:9999/albums').then(res => res.json()),
+                fetch('http://localhost:9999/listsongs').then(res => res.json()),
+                user ? fetch(`http://localhost:9999/like?userid=${user.id}&trackid=${aID}`).then(res => res.json()) : Promise.resolve([])
             ]);
 
             setArtists(artistsRes);
             setAlbums(albumsRes);
 
-            const acceptedSongs = songsRes.filter(song => song.accept === 'yes');
-            const topSongs = acceptedSongs.sort((a, b) => b.plays - a.plays).slice(0, 10);
+            // const acceptedSongs = songsRes.filter(song => song.accept === 'yes');
+            const topSongs = songsRes.sort((a, b) => b.plays - a.plays).slice(0, 10);
             const albumSongs = songsRes.filter(song => song.AlbumID === Number(aID));
             setSongs(albumSongs);
             setSongsBXH1(topSongs);
@@ -106,11 +116,11 @@ export default function SongList() {
 
         try {
             if (isLiked) {
-                await fetch(`https://yvkjyc-8080.csb.app/like/${likeId}`, { method: 'DELETE' });
+                await fetch(`http://localhost:9999/like/${likeId}`, { method: 'DELETE' });
                 setIsLiked(false);
                 setLikeId(null);
             } else {
-                const response = await fetch('https://yvkjyc-8080.csb.app/like', {
+                const response = await fetch('http://localhost:9999/like', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userid: user.id, trackid: parseInt(songplay.id) }),
@@ -156,7 +166,7 @@ export default function SongList() {
                             </Row>
                             <Row>
                                 <Col>
-                                    <p style={{ fontSize: '1.2rem' }}><strong>Thể loại:</strong> {songplay.categoryId}</p>
+                                    <p style={{ fontSize: '1.2rem' }}><strong>Thể loại:</strong> {categories?.find(c => c.id == songplay.categoryId)?.name}</p>
                                 </Col>
                             </Row>
                             <Row>

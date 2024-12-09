@@ -38,19 +38,19 @@ export default function PlaylistDetail() {
   const fetchData = useCallback(async () => {
     try {
       const [artistsRes, playlistRes, albumsRes, songsRes, likesRes] = await Promise.all([
-        fetch('https://yvkjyc-8080.csb.app/artist').then(res => res.json()),
-        fetch(`https://yvkjyc-8080.csb.app/playlist/${pid}`).then(res => res.json()),
-        fetch('https://yvkjyc-8080.csb.app/albums').then(res => res.json()),
-        fetch('https://yvkjyc-8080.csb.app/listsongs').then(res => res.json()),
-        user ? fetch(`https://yvkjyc-8080.csb.app/like?userid=${user.id}`).then(res => res.json()) : Promise.resolve([])
+        fetch('http://localhost:9999/artist').then(res => res.json()),
+        fetch(`http://localhost:9999/playlist/${pid}`).then(res => res.json()),
+        fetch('http://localhost:9999/albums').then(res => res.json()),
+        fetch('http://localhost:9999/listsongs').then(res => res.json()),
+        user ? fetch(`http://localhost:9999/like?userid=${user.id}`).then(res => res.json()) : Promise.resolve([])
       ]);
 
       setArtists(artistsRes);
       setPlaylist(playlistRes);
       setAlbums(albumsRes);
       
-      const acceptedSongs = songsRes.filter(song => song.accept === 'yes');
-      const topSongs = acceptedSongs.sort((a, b) => b.plays - a.plays).slice(0, 10);
+      // const acceptedSongs = songsRes.filter(song => song.accept === 'yes');
+      const topSongs = songsRes.sort((a, b) => b.plays - a.plays).slice(0, 10);
       const playlistSongs = songsRes.filter(song => playlistRes.listsongid.includes(song.id.toString()));
       setSongs(playlistSongs);
       setSongsBXH1(topSongs);
@@ -76,13 +76,17 @@ export default function PlaylistDetail() {
     fetchData();
   }, [fetchData]);
 
+  useEffect(() => {
+    setSongId(sid);
+}, [sid, setSongId]);
+
   const onSongClick = (id) => {
     setCurrentPlayingId(id);
     handleSongClick(id);
   };
 
   const handleSongClick = (id) => {
-    const selectedSong = songs.find(song => song.id === id);
+    const selectedSong = songs.find(song => song.id == id);
     if (selectedSong) {
       setSongplay(selectedSong);
       setSongId(id);
@@ -102,11 +106,11 @@ export default function PlaylistDetail() {
 
     try {
       if (isLiked) {
-        await fetch(`https://yvkjyc-8080.csb.app/like/${likeId}`, { method: 'DELETE' });
+        await fetch(`http://localhost:9999/like/${likeId}`, { method: 'DELETE' });
         setIsLiked(false);
         setLikeId(null);
       } else {
-        const response = await fetch('https://yvkjyc-8080.csb.app/like', {
+        const response = await fetch('http://localhost:9999/like', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userid: user.id, trackid: parseInt(songplay.id) }),
@@ -142,7 +146,7 @@ export default function PlaylistDetail() {
             <Row key={s.id} style={{ border: "1px solid black", marginTop: "10px" }}>
               <Col>
                 <p onClick={() => onSongClick(s.id)}>
-                  {currentPlayingId === s.id && <i className="bi bi-play-fill play-icon" style={{ padding: "5px" }}></i>}
+                  {currentPlayingId == s.id && <i className="bi bi-play-fill play-icon" style={{ padding: "5px" }}></i>}
                   {index + 1}. {s.title} - {getArtistName(s.artistID)}
                 </p>
               </Col>

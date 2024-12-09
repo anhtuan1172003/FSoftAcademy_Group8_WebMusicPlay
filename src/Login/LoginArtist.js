@@ -14,7 +14,7 @@ export default function LoginArtist() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('https://yvkjyc-8080.csb.app/artist')
+        fetch('http://localhost:9999/artist')
             .then(res => res.json())
             .then(data => setArtists(data))
             .catch(e => {

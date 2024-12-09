@@ -7,6 +7,7 @@ import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Line
 import { Link, NavLink } from "react-router-dom";
 import './dash.css'
 import HeaderAdmin from '../Admin/Header';
+import { Container } from 'react-bootstrap';
 
 
 function AdminDashboard() {
@@ -17,7 +18,7 @@ function AdminDashboard() {
 
 
   useEffect(() => {
-    fetch('https://yvkjyc-8080.csb.app/listsongs')
+    fetch('http://localhost:9999/listsongs')
       .then(response => response.json())
       .then(data => {
         console.log('Received data:', data); // Debug log
@@ -36,7 +37,7 @@ function AdminDashboard() {
       });
   }, []);
   useEffect(() => {
-    fetch('https://yvkjyc-8080.csb.app/artist')
+    fetch('http://localhost:9999/artist')
       .then(response => response.json())
       .then(data => {
         console.log('Received data:', data); // Debug log
@@ -55,7 +56,7 @@ function AdminDashboard() {
       });
   }, []);
   useEffect(() => {
-    fetch('https://yvkjyc-8080.csb.app/users')
+    fetch('http://localhost:9999/users')
       .then(response => response.json())
       .then(data => {
         console.log('Received data:', data); // Debug log
@@ -74,7 +75,7 @@ function AdminDashboard() {
       });
   }, []);
   useEffect(() => {
-    fetch('https://yvkjyc-8080.csb.app/transaction_history')
+    fetch('http://localhost:9999/transaction_history')
       .then(response => response.json())
       .then(data => {
         console.log('Received data:', data); // Debug log
@@ -97,7 +98,7 @@ function AdminDashboard() {
 
   useEffect(() => {
     // Fetch data from API
-    fetch('https://yvkjyc-8080.csb.app/transaction_history')
+    fetch('http://localhost:9999/transaction_history')
       .then(response => response.json())
       .then(data => {
         setData(data); // Set fetched data to state
@@ -138,7 +139,7 @@ function AdminDashboard() {
   // kiem tra user
   const [artist, setArtist] = useState([]);
   useEffect(() => {
-    fetch(`https://yvkjyc-8080.csb.app/artist`)
+    fetch(`http://localhost:9999/artist`)
       .then(res => res.json())
       .then(data => setArtist(data))
       .catch(e => console.log(e));
@@ -150,7 +151,7 @@ function AdminDashboard() {
 
 
   return (
-    <main className='main-container' style={{ backgroundColor: 'white' }}>
+<Container>
       <HeaderAdmin></HeaderAdmin>
       <div className='main-title'>
         <h3 style={{ color: 'black' }}><Link to={'/artistDashboard'}>DASHBOARD</Link></h3>
@@ -234,7 +235,7 @@ function AdminDashboard() {
         </ResponsiveContainer>
       </div>
 
-    </main>
+      </Container>
   )
 }
 

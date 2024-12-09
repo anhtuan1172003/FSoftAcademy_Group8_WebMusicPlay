@@ -28,7 +28,7 @@ const MusicPlayer = () => {
 
     useEffect(() => {
         if (songId) {
-            fetch(`https://yvkjyc-8080.csb.app/listsongs/${songId}`)
+            fetch(`http://localhost:9999/listsongs/${songId}`)
                 .then(res => res.json())
                 .then(data => {
                     setSong(data);
@@ -49,7 +49,7 @@ const MusicPlayer = () => {
         setPlays(newPlays);
 
         try {
-            const response = await fetch(`https://yvkjyc-8080.csb.app/listsongs/${songId}`, {
+            const response = await fetch(`http://localhost:9999/listsongs/${songId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

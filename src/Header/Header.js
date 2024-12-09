@@ -33,7 +33,8 @@ export default function Header() {
     const handleRemove = () => {
         sessionStorage.removeItem("user")
         setUser(null);
-        window.location.reload();
+        navigate('/Home');
+        
     }
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
