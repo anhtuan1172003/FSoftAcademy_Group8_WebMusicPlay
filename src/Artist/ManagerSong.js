@@ -177,6 +177,10 @@ const ManageTableArtist = () => {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
+  const removeDiacritics = (str) => {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+  };
+
   const filteredSongs = useMemo(() => {
     let result = songs;
 
@@ -193,9 +197,7 @@ const ManageTableArtist = () => {
     return result;
   }, [songs, loggedInArtist, search]);
 
-  const removeDiacritics = (str) => {
-    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-  };
+  
 
   const handleDelete = (songId) => {
     if (window.confirm("Do you want to delete?")) {
