@@ -4,6 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
     from 'recharts';
 import './dash.css'
 import HeaderArtist from '../Artist/HeaderArtist';
+import { Container } from 'react-bootstrap';
 
 function ArtistDashboard() {
     const [listsongs, setListSong] = useState([]);
@@ -39,10 +40,11 @@ function ArtistDashboard() {
         return null;
     };
     return (
+        <Container>
         <main className='main-container'>
                   <HeaderArtist></HeaderArtist>
           <div className='chart-container'>
-          <h2 style={{ textAlign: 'center', marginTop: '20px' }}>Total Revenue: {totalRevenue} VND</h2>
+          <h2 style={{ textAlign: 'center', marginTop: '20px', color: 'green' }}>Total Revenue: {totalRevenue} VND</h2>
           <ResponsiveContainer width={1500} height={400}>
               <BarChart
                 layout="vertical"
@@ -59,6 +61,7 @@ function ArtistDashboard() {
             </ResponsiveContainer>
           </div>
         </main>
+        </Container>
       );
     
 }
