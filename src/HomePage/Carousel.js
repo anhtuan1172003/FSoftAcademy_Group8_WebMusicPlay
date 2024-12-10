@@ -1,7 +1,6 @@
 import { Button, Container, Form, Nav, Navbar, Col, Row, Image, Carousel, NavDropdown, InputGroup, Dropdown  } from 'react-bootstrap';
 export default function Carousel1() {
 return(
-<Row>
                 <Carousel>
                     <Carousel.Item>
                         <Image src="/image/image1.jpg" className='carousel-image'></Image>
@@ -22,6 +21,5 @@ return(
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
-            </Row>
 );
             }
