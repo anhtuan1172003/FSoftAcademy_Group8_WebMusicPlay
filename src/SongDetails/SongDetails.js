@@ -18,10 +18,19 @@ export default function SongDetail() {
     const [feedback, setFeedback] = useState([]);
     const [newFeedback, setNewFeedback] = useState('');
     const [userId, setUserId] = useState(0);
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         handleSessionStorage();
     }, []);
+    useEffect(() => {    
+        fetch("https://dsqkll-8090.csb.app/categories")
+          .then(res => res.json())
+          .then(result => {
+            setCategories(result);
+          })
+          .catch(error => console.log(error));
+      }, []);
     useEffect(() => {
         fetch(`https://dsqkll-8090.csb.app/feedback?songId=${sID}`)
             .then(res => res.json())
@@ -159,7 +168,7 @@ export default function SongDetail() {
                     </Row>
                     <Row>
                         <Col>
-                            <p style={{ fontSize: '1.2rem' }}><strong>Thể loại: </strong>{song.categoryId}</p>
+                            <p style={{ fontSize: '1.2rem' }}><strong>Thể loại: </strong>{categories?.find(c => c.id == song.categoryId)?.name}</p>
                         </Col>
                     </Row>
                     <Row>

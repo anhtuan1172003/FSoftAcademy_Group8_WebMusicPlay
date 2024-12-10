@@ -158,28 +158,28 @@ function AdminDashboard() {
       </div>
       <NavLink to={"/home1"}></NavLink>
       <div className='main-cards'>
-        <div className='card'>
+        <div className='card' style={{width: "100%"}}>
           <div className='card-inner'>
             <h3>SONGS</h3>
             <BsMusicNoteBeamed className='card_icon' />
           </div>
           <h1>{songCount}</h1>
         </div>
-        <div className='card'>
+        <div className='card' style={{width: "100%"}}>
           <div className='card-inner'>
             <h3>ARTIST</h3>
             <BsMicFill className='card_icon' />
           </div>
           <h1>{artistCount}</h1>
         </div>
-        <div className='card'>
+        <div className='card' style={{width: "100%"}}>
           <div className='card-inner'>
             <h3>CUSTOMERS</h3>
             <BsPeopleFill className='card_icon' />
           </div>
           <h1>{cusCount}</h1>
         </div>
-        <div className='card'>
+        <div className='card' style={{width: "100%"}}>
           <div className='card-inner'>
             <h3>PREMIUM</h3>
             <BsStarFill className='card_icon' />

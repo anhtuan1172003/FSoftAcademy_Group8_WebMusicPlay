@@ -18,9 +18,18 @@ export default function PlaylistDetail() {
   const [isLiked, setIsLiked] = useState(false);
   const [likeId, setLikeId] = useState(null);
   const [user, setUser] = useState(null);
+  const [categories, setCategories] = useState([]);
   
   useEffect(() => {
     handleSessionStorage();
+  }, []);
+  useEffect(() => {    
+    fetch("https://dsqkll-8090.csb.app/categories")
+      .then(res => res.json())
+      .then(result => {
+        setCategories(result);
+      })
+      .catch(error => console.log(error));
   }, []);
 
   const handleSessionStorage = () => {
@@ -74,7 +83,7 @@ export default function PlaylistDetail() {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, []);
 
   useEffect(() => {
     setSongId(sid);
@@ -85,6 +94,11 @@ export default function PlaylistDetail() {
     handleSongClick(id);
   };
 
+  const getArtistName = useCallback((artistId) => {
+    const artist = artists.find(a => a.id === artistId);
+    return artist ? artist.name : 'Unknown Artist';
+  }, [artists]);
+
   const handleSongClick = (id) => {
     const selectedSong = songs.find(song => song.id == id);
     if (selectedSong) {
@@ -92,11 +106,6 @@ export default function PlaylistDetail() {
       setSongId(id);
     }
   };
-
-  const getArtistName = useCallback((artistId) => {
-    const artist = artists.find(a => a.id === artistId);
-    return artist ? artist.name : 'Unknown Artist';
-  }, [artists]);
 
   const handleLike = async () => {
     if (!user) {
@@ -166,7 +175,7 @@ export default function PlaylistDetail() {
               </Row>
               <Row>
                 <Col>
-                  <p style={{ fontSize: '1.2rem' }}><strong>Thể loại:</strong> {songplay.categoryId}</p>
+                  <p style={{ fontSize: '1.2rem' }}><strong>Thể loại:</strong> {categories?.find(c => c.id == songplay.categoryId)?.name}</p>
                 </Col>
               </Row>
               <Row>

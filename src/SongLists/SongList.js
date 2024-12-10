@@ -69,7 +69,7 @@ export default function SongList() {
                 setSongID1(albumSongs[0].id);
             }
 
-            if (likesRes.find(a => Number(a.trackid) === Number(sID))) {
+            if (likesRes.find(a => Number(a.trackid) == Number(sID))) {
                 setIsLiked(true);
                 setLikeId(likesRes[0].id);
             } else {
@@ -83,7 +83,7 @@ export default function SongList() {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [aID]);
 
     useEffect(() => {
         setSongId(sid);
@@ -101,7 +101,7 @@ export default function SongList() {
     }, [artists]);
 
     const handleSongClick = (id) => {
-        const selectedSong = songs.find(song => song.id === id);
+        const selectedSong = songs.find(song => song.id == id);
         if (selectedSong) {
             setSongplay(selectedSong);
             setSongID1(id);

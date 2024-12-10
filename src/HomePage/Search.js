@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from "react-router-dom";
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import './Card.css'
 
 export default function Search() {
     const [songLists, setSongLists] = useState([]);
@@ -43,8 +44,8 @@ export default function Search() {
                             {totalResults > 0 ? (
                                 <ul>
                                     {filteredSongs.map((song) => (
-                                        <Card style={{width:'210px',marginBottom:'10px'}}>
-                                            <Card.Img variant="top" src={song.imgSrc} style={{ width: "210px" }} />
+                                        <Card style={{backgroundColor: "white"}}>
+                                            <Card.Img variant="top" src={song.imgSrc} className='album-card' style={{backgroundColor: "white"}}/>
                                             <Card.Body>
                                                 <Card.Title>
                                                     <Link to={`/song/${song.id}`}><p>{song.title}</p></Link>
